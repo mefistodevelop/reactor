@@ -1,0 +1,41 @@
+.site-header {
+  grid-area: header;
+  display: flex;
+  margin-bottom: 20px;
+  width: 100%;
+  min-height: 60px;
+  background: #ffffff;
+  box-shadow: 0 0 8px 1px rgba(0, 0, 0, 0.2);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+  }
+
+  &__logo-link {
+    font-size: 40px;
+    font-weight: 700;
+    color: #dc4734;
+    text-decoration: none;
+
+    @media (max-width: 576px) {
+      font-size: 30px;
+    }
+  }
+
+  &__search {
+    max-width: 250px;
+    height: 30px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__search-bar {
+    border: none;
+    outline: none;
+  }
+}
