@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import logo from './images/logo.svg';
+import Userpic from '../Userpic/Userpic';
 
 function Header(props) {
   return (
@@ -16,7 +17,9 @@ function Header(props) {
         <div className="site-header__search">
           <input type="text" className="site-header__search-bar" placeholder="Search" />
         </div>
-        <div className="profileicon">profile icon</div>
+        <div className="profileicon">
+          <Userpic path="https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg" />
+        </div>
       </div>
     </header>
   );
