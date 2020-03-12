@@ -1,1 +1,18 @@
 @import './normalize.scss';
+
+.content-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  grid-template-areas: 'navbar content';
+  gap: 10px;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.content {
+  grid-area: content;
+  > main {
+    height: 100vh;
+  }
+}
