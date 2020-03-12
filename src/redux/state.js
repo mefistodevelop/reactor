@@ -1,0 +1,24 @@
+const state = {
+  profilePage: {
+    posts: [
+      {
+        id: 1,
+        name: 'you know my name',
+        userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYGgvh223rQXiRrH1k91ftAkPXZ8rUsDYBAi_UyUgyqwGtVRBl',
+        time: 'yesterday',
+        text: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, cum.',
+        likes: 100,
+      },
+      {
+        id: 2,
+        name: 'you know my name',
+        userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYGgvh223rQXiRrH1k91ftAkPXZ8rUsDYBAi_UyUgyqwGtVRBl',
+        time: 'yesterday',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, error porro nemo libero doloremque beatae accusamus fugiat culpa placeat perspiciatis?',
+        likes: 201,
+      },
+    ],
+  },
+};
+
+export default state;
