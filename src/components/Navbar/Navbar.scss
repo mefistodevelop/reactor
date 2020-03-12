@@ -1,4 +1,29 @@
 .navbar {
   grid-area: navbar;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
   background-color: rgb(255, 158, 158);
+
+  &__navigation-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  &__navigation-link {
+    text-decoration: none;
+    color: #000000;
+
+    &:hover {
+      font-weight: 700;
+    }
+
+    &.active {
+      color: #dc4734;
+      font-weight: 700;
+    }
+  }
 }
