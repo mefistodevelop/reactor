@@ -4,10 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
+import state from './redux/state';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <App posts={ state.profilePage.posts } />
   </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

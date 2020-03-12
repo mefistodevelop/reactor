@@ -3,22 +3,23 @@ import './MyPosts.scss';
 import Post from './Post/Post';
 
 function MyPosts(props) {
+
+  const myPosts = props.posts.map((post) => {
+    return (
+      <Post 
+        key={ post.id }
+        name={ post.name }
+        userpic={ post.userpic }
+        time={ post.time }
+        text={ post.text }
+        likes={ post.likes }
+      />
+    );
+  });
+
   return (
     <div className="my-posts">
-      <Post 
-        userpic={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYGgvh223rQXiRrH1k91ftAkPXZ8rUsDYBAi_UyUgyqwGtVRBl'}
-        name={'you know my name'}
-        time={'yesterday'}
-        text={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, cum.'}
-        likes={100}
-      />
-      <Post 
-        userpic={'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSYGgvh223rQXiRrH1k91ftAkPXZ8rUsDYBAi_UyUgyqwGtVRBl'}
-        name={'you know my name'}
-        time={'yesterday'}
-        text={'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsam, cum.'}
-        likes={200}
-      />
+      { myPosts }
     </div>
   );
 }

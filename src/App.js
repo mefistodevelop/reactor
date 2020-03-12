@@ -6,14 +6,14 @@ import Profile from './components/Profile/Profile';
 import Messages from './components/Messages/Messages';
 import { Route } from 'react-router-dom';
 
-function App() {
+function App(props) {
   return (
     <div className="app-wrapper">
       <Header />
       <div className="content-wrapper">
         <Navbar />
         <div className="content">
-          <Route path={'/profile'} render={() => <Profile />}/>
+          <Route path={'/profile'} render={() => <Profile posts={ props.posts } />}/>
           <Route path={'/messages'} render={() => <Messages />}/>
         </div>
       </div>
