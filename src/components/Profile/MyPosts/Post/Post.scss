@@ -1,0 +1,61 @@
+.post {
+  max-width: 570px;
+  background-color: #fff;
+  padding: 30px;
+  margin-bottom: 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &__header {
+    display: flex;
+    margin-bottom: 18px;
+  }
+
+  &__userpic {
+    margin-right: 15px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+  }
+
+  &__username {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #333333;
+    text-transform: capitalize;
+  }
+
+  &__time {
+    font-size: 14px;
+    font-weight: 400;
+    color: #444444;
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 400;
+    color: #444444;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__like {
+    font-size: 14px;
+    font-weight: 400;
+    color: #212529;
+    cursor: pointer;
+
+    &:hover {
+      color: #dc4734;
+    }
+  }
+}
