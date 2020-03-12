@@ -1,3 +1,23 @@
 .profile {
-  background-color: rgb(104, 247, 116);
+  grid-area: profile-content;
+  display: grid;
+  grid-template-columns: 7fr 4fr;
+  grid-template-rows: 270px 1fr;
+  grid-template-areas: 
+    'banner banner'
+    'posts friends';
+  background-color: rgb(18, 223, 223);
+  height: 100%;
+
+  &__banner {
+    grid-area: banner;
+    width: 100%;
+    height: 270px;
+    max-height: 370px;
+    background: url('./images/profile-banner.jpg') center center/ cover no-repeat;
+  }
+
+  &__my-posts {
+    grid-area: posts;
+  }
 }
