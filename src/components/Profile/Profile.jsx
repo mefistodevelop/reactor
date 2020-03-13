@@ -14,6 +14,7 @@ function Profile(props) {
           updateNewPostText={ props.updateNewPostText }
           getNewPostText={ props.getNewPostText }
           addNewPost={ props.addNewPost }
+          dispatch={ props.dispatch }
         />
       </div>
       <div className="profile__mutual-friends"></div>

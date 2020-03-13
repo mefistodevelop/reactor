@@ -13,12 +13,11 @@ function AddPost(props) {
 
   const newPostTextOnChange = () => {
     const text = getText();
-    props.updateNewPostText(text);
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
   }
 
   const addPost = () => {
-    const text = getText();
-    props.addNewPost(text);
+    props.dispatch({ type: 'ADD-NEW-POST' });
   }
 
   return (

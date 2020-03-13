@@ -11,9 +11,8 @@ function App(props) {
   const profileData = <Profile
     posts={ props.store.getPosts() } 
     userData={ props.store.getUser() }
-    updateNewPostText={ props.store.updateNewPostText.bind(props.store) }
     getNewPostText={ props.store.getNewPostText.bind(props.store) }
-    addNewPost={ props.store.addNewPost.bind(props.store) }
+    dispatch={ props.store.dispatch.bind(props.store) }
   />
 
   return (

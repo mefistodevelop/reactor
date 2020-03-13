@@ -26,6 +26,7 @@ function MyPosts(props) {
           updateNewPostText={ props.updateNewPostText }
           getNewPostText={ props.getNewPostText }
           addNewPost={ props.addNewPost }
+          dispatch={ props.dispatch }
         />
       </div>
       { myPosts }

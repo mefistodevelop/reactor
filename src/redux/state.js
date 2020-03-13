@@ -4,6 +4,8 @@ const user = {
   userpic: 'https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg',
 };
 
+const ADD_NEW_POST = 'ADD-NEW-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 const store = {
   state: {
@@ -48,33 +50,34 @@ const store = {
     return `${today.getHours()}:${minutes}`;
   },
 
-  updateNewPostText(newText) {
-    this.state.profilePage.newPostText = newText;
-    this.callSubscriber(this);
-  },
-
-  addNewPost(postText) {
-    const posts = this.state.profilePage.posts;
-    const lastId = posts[posts.length - 1].id;
-  
-    posts.push({
-      id: lastId + 1,
-      name: user.name,
-      userpic: user.userpic,
-      time: this.getCurrentTime(),
-      text: postText,
-      likes: 0,
-    });
-  
-    this.state.profilePage.newPostText = '';
-    this.callSubscriber(this);
-  },
-
   callSubscriber() {},
 
   subscribe(observer) {
     this.callSubscriber = observer;
   },
+
+  dispatch(action) {
+    if (action.type === UPDATE_NEW_POST_TEXT) {
+      this.state.profilePage.newPostText = action.newText;
+      this.callSubscriber(this);
+    }
+    else if (action.type === ADD_NEW_POST) {
+      const posts = this.state.profilePage.posts;
+      const lastId = posts[posts.length - 1].id;
+    
+      posts.push({
+        id: lastId + 1,
+        name: user.name,
+        userpic: user.userpic,
+        time: this.getCurrentTime(),
+        text: this.state.profilePage.newPostText,
+        likes: 0,
+      });
+    
+      this.state.profilePage.newPostText = '';
+      this.callSubscriber(this);
+    }
+  }
 
 };
 
