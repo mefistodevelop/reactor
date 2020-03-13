@@ -7,13 +7,15 @@ import Messages from './components/Messages/Messages';
 import { Route } from 'react-router-dom';
 
 function App(props) {
+  const profileData = <Profile posts={ props.posts } userData={ props.userData }/>
+
   return (
     <div className="app-wrapper">
       <Header />
       <div className="content-wrapper">
         <Navbar />
         <div className="content">
-          <Route path={'/profile'} render={() => <Profile posts={ props.posts } />}/>
+          <Route path={'/profile'} render={() => profileData} />
           <Route path={'/messages'} render={() => <Messages />}/>
         </div>
       </div>

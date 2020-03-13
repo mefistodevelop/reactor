@@ -1,10 +1,11 @@
 import React from 'react';
 import './MyPosts.scss';
 import Post from './Post/Post';
+import AddPost from './AddPost/AddPost';
 
 function MyPosts(props) {
 
-  const myPosts = props.posts.map((post) => {
+  const myPosts = props.posts.reverse().map((post) => {
     return (
       <Post 
         key={ post.id }
@@ -19,6 +20,9 @@ function MyPosts(props) {
 
   return (
     <div className="my-posts">
+      <div className="my-posts__add-post">
+        <AddPost userData={ props.userData } />
+      </div>
       { myPosts }
     </div>
   );

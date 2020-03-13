@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import state from './redux/state';
+import state, { getUser } from './redux/state';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App posts={ state.profilePage.posts } />
+    <App posts={ state.profilePage.posts } userData={ getUser() } />
   </BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
