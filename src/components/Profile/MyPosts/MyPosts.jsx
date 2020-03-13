@@ -5,7 +5,7 @@ import AddPost from './AddPost/AddPost';
 
 function MyPosts(props) {
 
-  const myPosts = props.posts.reverse().map((post) => {
+  const myPosts = props.posts.map((post) => {
     return (
       <Post 
         key={ post.id }
@@ -21,7 +21,12 @@ function MyPosts(props) {
   return (
     <div className="my-posts">
       <div className="my-posts__add-post">
-        <AddPost userData={ props.userData } />
+        <AddPost 
+          userData={ props.userData } 
+          updateNewPostText={ props.updateNewPostText }
+          getNewPostText={ props.getNewPostText }
+          addNewPost={ props.addNewPost }
+        />
       </div>
       { myPosts }
     </div>

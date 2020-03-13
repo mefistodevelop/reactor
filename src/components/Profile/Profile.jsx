@@ -7,7 +7,14 @@ function Profile(props) {
     <main className="profile">
       <div className="profile__banner"/>
       <div className="profile__my-posts">
-        <MyPosts posts={ props.posts } userData={ props.userData } />
+        <MyPosts 
+          posts={ props.posts } 
+          userData={ props.userData } 
+          newPostText={ props.newPostText }
+          updateNewPostText={ props.updateNewPostText }
+          getNewPostText={ props.getNewPostText }
+          addNewPost={ props.addNewPost }
+        />
       </div>
       <div className="profile__mutual-friends"></div>
     </main>

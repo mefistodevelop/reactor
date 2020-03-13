@@ -7,7 +7,15 @@ import Messages from './components/Messages/Messages';
 import { Route } from 'react-router-dom';
 
 function App(props) {
-  const profileData = <Profile posts={ props.posts } userData={ props.userData }/>
+
+  const profileData = <Profile
+    posts={ props.posts } 
+    userData={ props.userData }
+    newPostText={ props.state.profilePage.newPostText }
+    updateNewPostText={ props.updateNewPostText }
+    getNewPostText={ props.getNewPostText }
+    addNewPost={ props.addNewPost }
+  />
 
   return (
     <div className="app-wrapper">
