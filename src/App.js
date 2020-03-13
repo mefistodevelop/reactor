@@ -9,12 +9,11 @@ import { Route } from 'react-router-dom';
 function App(props) {
 
   const profileData = <Profile
-    posts={ props.posts } 
-    userData={ props.userData }
-    newPostText={ props.state.profilePage.newPostText }
-    updateNewPostText={ props.updateNewPostText }
-    getNewPostText={ props.getNewPostText }
-    addNewPost={ props.addNewPost }
+    posts={ props.store.getPosts() } 
+    userData={ props.store.getUser() }
+    updateNewPostText={ props.store.updateNewPostText.bind(props.store) }
+    getNewPostText={ props.store.getNewPostText.bind(props.store) }
+    addNewPost={ props.store.addNewPost.bind(props.store) }
   />
 
   return (
