@@ -58,7 +58,7 @@ const store = {
 
   dispatch(action) {
     if (action.type === UPDATE_NEW_POST_TEXT) {
-      this.state.profilePage.newPostText = action.newText;
+      this.state.profilePage.newPostText = action.text;
       this.callSubscriber(this);
     }
     else if (action.type === ADD_NEW_POST) {
@@ -78,7 +78,10 @@ const store = {
       this.callSubscriber(this);
     }
   }
-
 };
 
+const addPostActionCreator = () => ({ type: ADD_NEW_POST });
+const updateNewPostTextActionCreator = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
+
 export default store;
+export { addPostActionCreator, updateNewPostTextActionCreator };

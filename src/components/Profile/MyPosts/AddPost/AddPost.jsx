@@ -2,6 +2,7 @@ import React from 'react';
 import './AddPost.scss';
 import Userpic from '../../../Userpic/Userpic';
 import Button from '../../../Button/Button';
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../../redux/state';
 
 function AddPost(props) {
 
@@ -13,11 +14,11 @@ function AddPost(props) {
 
   const newPostTextOnChange = () => {
     const text = getText();
-    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', newText: text });
+    props.dispatch(updateNewPostTextActionCreator(text));
   }
 
   const addPost = () => {
-    props.dispatch({ type: 'ADD-NEW-POST' });
+    props.dispatch(addPostActionCreator());
   }
 
   return (
