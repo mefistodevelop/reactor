@@ -1,0 +1,46 @@
+.message {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+
+  &_me {
+    flex-direction: row-reverse;
+  }
+
+  &__userpic {
+    margin-right: 15px;
+
+    &_me {
+      margin-right: 0;
+      margin-left: 15px;
+    }
+  }
+
+  &__bubble {
+    display: flex;
+    position: relative;
+    max-width: 400px;
+    padding: 10px;
+    padding-bottom: 5px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    &_me {
+      background-color: #e47263;
+      color: #fff;
+    }
+  }
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+
+  &__time {
+    font-size: 11px;
+    color: inherit;
+    text-align: right;
+    align-self: flex-end;
+  }
+}
