@@ -1,7 +1,7 @@
 import React from 'react';
 import './AddMessage.scss';
 import Button from '../../Button/Button';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../../redux/state';
+import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../../redux/messagesReducer';
 
 function AddMessage(props) {
 

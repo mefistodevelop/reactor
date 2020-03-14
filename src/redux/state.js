@@ -1,3 +1,6 @@
+import profileReducer from "./profileReducer";
+import messagesReducer from "./messagesReducer";
+
 const user = {
   id: 1,
   name: 'User name',
@@ -35,15 +38,12 @@ const friends = [
   }
 ];
 
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 
 const store = {
   friends,
   state: {
     profilePage: {
+      user,
       posts: [
         {
           id: 1,
@@ -65,6 +65,7 @@ const store = {
       newPostText: '',
     },
     messagesPage: {
+      user,
       messagesStore: [
         { 
           id: 1, 
@@ -133,57 +134,20 @@ const store = {
   },
 
   dispatch(action) {
-    if (action.type === UPDATE_NEW_POST_TEXT) {
-      this.state.profilePage.newPostText = action.text;
-      this.callSubscriber(this);
-    }
-    else if (action.type === ADD_NEW_POST) {
-      const posts = this.state.profilePage.posts;
-      const lastId = posts[posts.length - 1].id;
     
-      posts.push({
-        id: lastId + 1,
-        name: user.name,
-        userpic: user.userpic,
-        time: this.getCurrentTime(),
-        text: this.state.profilePage.newPostText,
-        likes: 0,
-      });
-    
-      this.state.profilePage.newPostText = '';
-      this.callSubscriber(this);
-    }
-    else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this.state.messagesPage.newMessageText = action.text;
-      this.callSubscriber();
-    }
-    else if (action.type === ADD_NEW_MESSAGE) {
-      const messages = this.state.messagesPage.messagesStore;
-      const lastId = messages[messages.length - 1].id;
+    this.state.profilePage = profileReducer({
+      getCurrentTime: this.getCurrentTime,
+      profilePage: this.state.profilePage,
+    }, action);
 
-      messages.push({
-        id: lastId + 1,
-        userpic: user.userpic,
-        text: this.getNewMessageText(),
-        time: this.getCurrentTime(),
-        mod: 'me',
-      });
+    this.state.messagesPage = messagesReducer({
+      getCurrentTime: this.getCurrentTime,
+      messagesPage: this.state.messagesPage,
+    }, action);
 
-      this.state.messagesPage.newMessageText = '';
-      this.callSubscriber();
-    }
+    this.callSubscriber();
+
   }
 };
 
-const addPostActionCreator = () => ({ type: ADD_NEW_POST });
-const updateNewPostTextActionCreator = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
-const updateNewMessageTextActionCreator = (newText) => ({ type: UPDATE_NEW_MESSAGE_TEXT, text: newText });
-const addMessageActionCreator = () => ({ type: ADD_NEW_MESSAGE });
-
 export default store;
-export {
-  addPostActionCreator, 
-  updateNewPostTextActionCreator, 
-  updateNewMessageTextActionCreator,
-  addMessageActionCreator,
-};
