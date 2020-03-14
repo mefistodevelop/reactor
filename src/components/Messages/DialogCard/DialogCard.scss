@@ -1,0 +1,32 @@
+.dialog-card {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  max-width: 200px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  transition: .3s;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 5px #c01313;
+  }
+
+  &__userpic {
+    margin-right: 15px;
+  }
+
+  &__link {
+    color: #000000;
+    text-decoration: none;
+    outline-color: #dc4734;
+
+
+    &.active {
+      color: #dc4734;
+    }
+  }
+}
