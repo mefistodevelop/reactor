@@ -1,0 +1,32 @@
+.messages {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  height: 100%;
+
+  &__dialogs {
+    margin-right: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+
+    @media (max-width: 576px) {
+      margin-right: 10px;
+    }
+  }
+
+  &__dialogs-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__chat {
+    background-color: #ffffff;
+    box-shadow: 0px 1px 15px 0px rgba(51, 51, 51, 0.2);
+  }
+
+  &__add-message {
+    position: relative;
+    width: 100%;
+  }
+}

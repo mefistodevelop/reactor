@@ -13,7 +13,14 @@ function App(props) {
     userData={ props.store.getUser() }
     getNewPostText={ props.store.getNewPostText.bind(props.store) }
     dispatch={ props.store.dispatch.bind(props.store) }
-  />
+  />;
+
+  const messagesData = <Messages 
+    messagesStore={ props.store.getMessages() }
+    dialogsList={ props.store.getFriends() }
+    dispatch={ props.store.dispatch.bind(props.store) }
+    getNewMessageText={ props.store.getNewMessageText.bind(props.store) }
+  />;
 
   return (
     <div className="app-wrapper">
@@ -22,7 +29,7 @@ function App(props) {
         <Navbar />
         <div className="content">
           <Route path={'/profile'} render={() => profileData} />
-          <Route path={'/messages'} render={() => <Messages />}/>
+          <Route path={'/messages'} render={() => messagesData} />
         </div>
       </div>
     </div>
