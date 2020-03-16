@@ -4,7 +4,6 @@ import Post from './Post/Post';
 import AddPost from './AddPost/AddPost';
 
 function MyPosts(props) {
-
   const myPosts = props.posts.map((post) => {
     return (
       <Post 
@@ -24,7 +23,7 @@ function MyPosts(props) {
         <AddPost 
           userData={ props.userData } 
           updateNewPostText={ props.updateNewPostText }
-          getNewPostText={ props.getNewPostText }
+          newPostText={ props.newPostText }
           addNewPost={ props.addNewPost }
           dispatch={ props.dispatch }
         />

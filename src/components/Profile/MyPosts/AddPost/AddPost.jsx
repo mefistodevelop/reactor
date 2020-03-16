@@ -32,7 +32,7 @@ function AddPost(props) {
           ref={ newPost }
           onChange={ newPostTextOnChange }
           placeholder="write something"
-          value={ props.getNewPostText() }
+          value={ props.newPostText }
         />
         <Button type="button" text="share" onClick={ addPost } />
       </div>

@@ -4,9 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import store from './redux/state';
+import store from './redux/reduxStore';
 
-const rerenderEverything = (state) => {
+const rerenderEverything = (store) => {
   ReactDOM.render(
     <BrowserRouter>
       <App store={ store } />
@@ -14,7 +14,10 @@ const rerenderEverything = (state) => {
 }
 
 rerenderEverything(store);
-store.subscribe(rerenderEverything);
+
+store.subscribe(() => {
+  rerenderEverything(store);
+});
 
 
 // If you want your app to work offline and load faster, you can change

@@ -3,6 +3,7 @@ import './Profile.scss';
 import MyPosts from './MyPosts/MyPosts';
 
 function Profile(props) {
+  // debugger;
   return (
     <main className="profile">
       <div className="profile__banner"/>
@@ -12,7 +13,6 @@ function Profile(props) {
           userData={ props.userData } 
           newPostText={ props.newPostText }
           updateNewPostText={ props.updateNewPostText }
-          getNewPostText={ props.getNewPostText }
           addNewPost={ props.addNewPost }
           dispatch={ props.dispatch }
         />

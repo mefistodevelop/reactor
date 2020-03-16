@@ -22,7 +22,7 @@ function AddMessage(props) {
         className="add-message__field"
         placeholder="Text Message"
         ref={ newMessage }
-        value={ props.getNewMessageText() }
+        value={ props.newMessageText }
         onChange={ onNewMessageChange }
       />
       <div className="add-message__button">

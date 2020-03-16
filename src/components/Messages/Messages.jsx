@@ -44,7 +44,7 @@ function Messages(props) {
         <div className="messages__add-message">
           <AddMessage 
             dispatch={ props.dispatch }
-            getNewMessageText={ props.getNewMessageText }
+            newMessageText={ props.newMessageText }
           />
         </div>
       </div>

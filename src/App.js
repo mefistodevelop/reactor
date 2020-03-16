@@ -7,19 +7,19 @@ import Messages from './components/Messages/Messages';
 import { Route } from 'react-router-dom';
 
 function App(props) {
-
+  const state = props.store.getState();
   const profileData = <Profile
-    posts={ props.store.getPosts() } 
-    userData={ props.store.getUser() }
-    getNewPostText={ props.store.getNewPostText.bind(props.store) }
+    posts={ state.profilePage.posts } 
+    userData={ state.profilePage.user }
+    newPostText={ state.profilePage.newPostText }
     dispatch={ props.store.dispatch.bind(props.store) }
   />;
 
   const messagesData = <Messages 
-    messagesStore={ props.store.getMessages() }
-    dialogsList={ props.store.getFriends() }
+    messagesStore={ state.messagesPage.messagesStore }
+    dialogsList={ state.messagesPage.friends }
     dispatch={ props.store.dispatch.bind(props.store) }
-    getNewMessageText={ props.store.getNewMessageText.bind(props.store) }
+    newMessageText={ state.messagesPage.newMessageText }
   />;
 
   return (
