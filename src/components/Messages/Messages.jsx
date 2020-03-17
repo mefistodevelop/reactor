@@ -6,7 +6,10 @@ import AddMessage from './AddMessage/AddMessage';
 
 function Messages(props) {
 
-  const dialogs = props.dialogsList.map((dialog) => {
+  const dialogsList = props.state.messagesPage.friends;
+  const messagesStore = props.state.messagesPage.messagesStore;
+
+  const dialogs = dialogsList.map((dialog) => {
     return (
       <li className="dialogs__item" key={ dialog.id }>
         <DialogCard
@@ -18,7 +21,7 @@ function Messages(props) {
     );
   });
 
-  const chat = props.messagesStore.map((message) => {
+  const chat = messagesStore.map((message) => {
     return (
       <Message 
         key = { message.id }
@@ -43,8 +46,9 @@ function Messages(props) {
 
         <div className="messages__add-message">
           <AddMessage 
-            dispatch={ props.dispatch }
-            newMessageText={ props.newMessageText }
+            updateNewMessageText={ props.updateNewMessageText }
+            addMessage={ props.addMessage }
+            newMessageText={ props.state.messagesPage.newMessageText }
           />
         </div>
       </div>

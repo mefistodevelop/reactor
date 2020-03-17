@@ -3,8 +3,8 @@ import './App.scss';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import Profile from './components/Profile/Profile';
-import Messages from './components/Messages/Messages';
 import { Route } from 'react-router-dom';
+import MessagesContainer from './components/Messages/MessagesContainer';
 
 function App(props) {
   const state = props.store.getState();
@@ -15,12 +15,7 @@ function App(props) {
     dispatch={ props.store.dispatch.bind(props.store) }
   />;
 
-  const messagesData = <Messages 
-    messagesStore={ state.messagesPage.messagesStore }
-    dialogsList={ state.messagesPage.friends }
-    dispatch={ props.store.dispatch.bind(props.store) }
-    newMessageText={ state.messagesPage.newMessageText }
-  />;
+  const messagesData = <MessagesContainer store={ props.store } />;
 
   return (
     <div className="app-wrapper">

@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyPosts.scss';
 import Post from './Post/Post';
-import AddPost from './AddPost/AddPost';
+import AddPostContainer from './AddPost/AddPostContainer';
 
 function MyPosts(props) {
   const myPosts = props.posts.map((post) => {
@@ -20,14 +20,13 @@ function MyPosts(props) {
   return (
     <div className="my-posts">
       <div className="my-posts__add-post">
-        <AddPost 
+        <AddPostContainer
           userData={ props.userData } 
-          updateNewPostText={ props.updateNewPostText }
           newPostText={ props.newPostText }
-          addNewPost={ props.addNewPost }
           dispatch={ props.dispatch }
         />
       </div>
+      
       { myPosts }
     </div>
   );

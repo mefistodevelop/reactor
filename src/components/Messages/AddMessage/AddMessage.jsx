@@ -1,19 +1,16 @@
 import React from 'react';
 import './AddMessage.scss';
 import Button from '../../Button/Button';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../../redux/messagesReducer';
 
 function AddMessage(props) {
 
-  const newMessage = React.createRef();
-
-  const onNewMessageChange = () => {
-    const text = newMessage.current.value;
-    props.dispatch(updateNewMessageTextActionCreator(text));
+  const onNewMessageChange = (event) => {
+    const text = event.target.value;
+    props.updateNewMessageText(text);
   }
 
   const addNewMessage = () => {
-    props.dispatch(addMessageActionCreator());
+    props.addMessage();
   }
 
   return (
@@ -21,7 +18,6 @@ function AddMessage(props) {
       <textarea 
         className="add-message__field"
         placeholder="Text Message"
-        ref={ newMessage }
         value={ props.newMessageText }
         onChange={ onNewMessageChange }
       />

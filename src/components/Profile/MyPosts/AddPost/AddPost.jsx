@@ -2,7 +2,6 @@ import React from 'react';
 import './AddPost.scss';
 import Userpic from '../../../Userpic/Userpic';
 import Button from '../../../Button/Button';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../../redux/profileReducer';
 
 function AddPost(props) {
 
@@ -14,11 +13,11 @@ function AddPost(props) {
 
   const newPostTextOnChange = () => {
     const text = getText();
-    props.dispatch(updateNewPostTextActionCreator(text));
+    props.updateNewPostText(text);
   }
 
-  const addPost = () => {
-    props.dispatch(addPostActionCreator());
+  const onAddPost = () => {
+    props.addPost();
   }
 
   return (
@@ -34,7 +33,7 @@ function AddPost(props) {
           placeholder="write something"
           value={ props.newPostText }
         />
-        <Button type="button" text="share" onClick={ addPost } />
+        <Button type="button" text="share" onClick={ onAddPost } />
       </div>
     </div>
   );
