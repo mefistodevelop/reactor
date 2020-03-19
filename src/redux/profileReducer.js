@@ -29,7 +29,6 @@ const initialState = {
 };
 
 function profileReducer(state = initialState, action) {
-  // debugger;
   switch (action.type) {
     case UPDATE_NEW_POST_TEXT:
       state.newPostText = action.text;

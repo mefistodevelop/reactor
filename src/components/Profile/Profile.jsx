@@ -1,18 +1,13 @@
 import React from 'react';
 import './Profile.scss';
-import MyPosts from './MyPosts/MyPosts';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 function Profile(props) {
   return (
     <main className="profile">
       <div className="profile__banner"/>
       <div className="profile__my-posts">
-        <MyPosts 
-          posts={ props.posts } 
-          userData={ props.userData } 
-          newPostText={ props.newPostText }
-          dispatch={ props.dispatch }
-        />
+        <MyPostsContainer />
       </div>
       <div className="profile__mutual-friends"></div>
     </main>

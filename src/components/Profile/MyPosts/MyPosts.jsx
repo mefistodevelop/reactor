@@ -1,10 +1,10 @@
 import React from 'react';
 import './MyPosts.scss';
 import Post from './Post/Post';
-import AddPostContainer from './AddPost/AddPostContainer';
+import AddPost from './AddPost/AddPost';
 
 function MyPosts(props) {
-  const myPosts = props.posts.map((post) => {
+  const myPosts = props.profilePage.posts.map((post) => {
     return (
       <Post 
         key={ post.id }
@@ -20,10 +20,11 @@ function MyPosts(props) {
   return (
     <div className="my-posts">
       <div className="my-posts__add-post">
-        <AddPostContainer
-          userData={ props.userData } 
-          newPostText={ props.newPostText }
-          dispatch={ props.dispatch }
+        <AddPost
+          addPost={ props.addPost }
+          updateNewPostText={ props.updateNewPostText }
+          userData={ props.profilePage.user } 
+          newPostText={ props.profilePage.newPostText }
         />
       </div>
       

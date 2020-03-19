@@ -6,8 +6,8 @@ import AddMessage from './AddMessage/AddMessage';
 
 function Messages(props) {
 
-  const dialogsList = props.state.messagesPage.friends;
-  const messagesStore = props.state.messagesPage.messagesStore;
+  const dialogsList = props.messagesPage.friends;
+  const messagesStore = props.messagesPage.messagesStore;
 
   const dialogs = dialogsList.map((dialog) => {
     return (
@@ -48,7 +48,7 @@ function Messages(props) {
           <AddMessage 
             updateNewMessageText={ props.updateNewMessageText }
             addMessage={ props.addMessage }
-            newMessageText={ props.state.messagesPage.newMessageText }
+            newMessageText={ props.messagesPage.newMessageText }
           />
         </div>
       </div>
