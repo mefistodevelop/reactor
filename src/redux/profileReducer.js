@@ -30,25 +30,29 @@ const initialState = {
 
 function profileReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_NEW_POST_TEXT:
-      state.newPostText = action.text;
-      return state;
+    case UPDATE_NEW_POST_TEXT: {
+      const stateCopy = { ...state };
+      stateCopy.newPostText = action.text;
+      return stateCopy;
+    }
 
-    case ADD_NEW_POST:
-      const posts = state.posts;
-      const lastId = posts[posts.length - 1].id;
+    case ADD_NEW_POST: {
+      const stateCopy = { ...state };
+      stateCopy.posts = [...state.posts];
+      const lastId = stateCopy.posts[stateCopy.posts.length - 1].id;
     
-      posts.push({
+      stateCopy.posts.push({
         id: lastId + 1,
-        name: state.user.name,
-        userpic: state.user.userpic,
-        time: state.getCurrentTime(),
-        text: state.newPostText,
+        name: stateCopy.user.name,
+        userpic: stateCopy.user.userpic,
+        time: stateCopy.getCurrentTime(),
+        text: stateCopy.newPostText,
         likes: 0,
       });
   
-      state.newPostText = '';
-      return state;
+      stateCopy.newPostText = '';
+      return stateCopy;
+    }
 
     default:
       return state;

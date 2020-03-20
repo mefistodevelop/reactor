@@ -41,24 +41,28 @@ const initialState = {
 
 function messagesReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT:
-      state.newMessageText = action.text;
-      return state;
+    case UPDATE_NEW_MESSAGE_TEXT: {
+      const stateCopy = { ...state };
+      stateCopy.newMessageText = action.text;
+      return stateCopy;
+    }
     
-    case ADD_NEW_MESSAGE:
-      const messages = state.messagesStore;
-      const lastId = messages[messages.length - 1].id;
+    case ADD_NEW_MESSAGE: {
+      const stateCopy = { ...state };
+      stateCopy.messagesStore = [...state.messagesStore];
+      const lastId = stateCopy.messagesStore[stateCopy.messagesStore.length - 1].id;
 
-      messages.push({
+      stateCopy.messagesStore.push({
         id: lastId + 1,
-        userpic: state.user.userpic,
-        text: state.newMessageText,
-        time: state.getCurrentTime(),
+        userpic: stateCopy.user.userpic,
+        text: stateCopy.newMessageText,
+        time: stateCopy.getCurrentTime(),
         mod: 'me',
       });
 
-      state.newMessageText = '';
-      return state;
+      stateCopy.newMessageText = '';
+      return stateCopy;
+    }
     
     default:
       return state;
