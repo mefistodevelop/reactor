@@ -32,6 +32,11 @@ function Navbar(props) {
               Settings
             </NavLink>
           </li>
+          <li className="navbar__navigation-item">
+            <NavLink className={'navbar__navigation-link'} to={'/users'}>
+              Users
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>

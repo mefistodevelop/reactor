@@ -1,0 +1,15 @@
+.users {
+  padding-left: 20px;
+  &__item {
+    margin-bottom: 20px;
+    
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
