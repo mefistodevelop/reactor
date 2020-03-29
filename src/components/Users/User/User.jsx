@@ -1,24 +1,25 @@
 import React from 'react';
 import './User.scss';
 import Userpic from '../../Userpic/Userpic';
+import userImage from '../../../assets/images/user-ghost.png';
 
 function User(props) {
   return (
     <div className="user">
       <div className="user__main-wrapper">
         <div className="user__userpic">
-          <Userpic path={props.userpic} />
+          <Userpic path={ props.userpic ? props.userpic : userImage } />
         </div>
         <div className="user__button">
           <button className="button">
-            {props.followed ? 'unfollow' : 'follow'}
+            { props.followed ? 'unfollow' : 'follow' }
           </button>
         </div>
       </div>
 
       <div className="user__info">
         <span className="user__name">
-          {props.name}
+          { props.name }
         </span>
         <span className="user__status">
           { props.status }
@@ -26,8 +27,8 @@ function User(props) {
       </div>
 
       <div className="user__location">
-        <span className="user__country">{props.location.country}</span>
-        <span className="user__city">{props.location.city}</span>
+        <span className="user__country">{ 'props.location.country' }</span>
+        <span className="user__city">{ 'props.location.city' }</span>
       </div>
     </div>
   );
