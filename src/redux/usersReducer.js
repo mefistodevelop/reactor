@@ -1,68 +1,14 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 const initialState = {
-  users: [
-    {
-      id: 1,
-      name: 'Stallone',
-      userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDp1qHgizNWuuDGBMfvJ9Fa1yx1MxgCi77vRCx1yZKd-4d-yld',
-      status: 'On air',
-      location: {
-        country: 'USA',
-        city: 'LA',
-      },
-      followed: true,
-    },
-    {
-      id: 2,
-      name: 'Spidey',
-      userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTmlPDeFvNgK5-4D-WLjqItQy9QLFRMiPT7Mb3Ve2AE_HA6fWkz',
-      status: 'On air',
-      location: {
-        country: 'Marvel',
-        city: 'NY',
-      },
-      followed: false,
-    },
-    {
-      id: 3,
-      name: 'Batman',
-      userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRkxEYJcaSN3Veki_4Q7m_LYgOSFF0ITdxzG4IFfGxp8_BrYdG3',
-      status: 'On air',
-      link: 'BruceWayne',
-      location: {
-        country: 'DC',
-        city: 'Gotham',
-      },
-      followed: true,
-    },
-    {
-      id: 4,
-      name: 'Goofy Doofy',
-      userpic: 'https://www.muralsticker.com/25439-thickbox/autocollants-et-vynils-disney-goofy.jpg',
-      status: 'On air',
-      link: 'googoo',
-      location: {
-        country: 'Disney',
-        city: 'City',
-      },
-      followed: false,
-    },
-    {
-      id: 5,
-      name: 'Buzz Lightyear',
-      userpic: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQR4VFHTHU0j5LMF45COg_es5t0S3BqkcBqReA3QUCZxx00hFxF',
-      status: 'On air',
-      link: 'spaceRanger007',
-      location: {
-        country: 'Far Galaxy',
-        city: 'Incredible town',
-      },
-      followed: false,
-    }
-  ],
+  users: [],
+  pageSize: 10,
+  totalUsersCount: 0,
+  currentPage: 1,
 };
 
 function usersReducer(state = initialState, action) {
@@ -92,7 +38,19 @@ function usersReducer(state = initialState, action) {
     case SET_USERS:
       return {
         ...state,
-        users: [ ...state.users, ...action.users ],
+        users: [...action.users],
+      };
+    
+    case SET_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.currentPage,
+      };
+    
+    case SET_TOTAL_USERS_COUNT:
+      return {
+        ...state,
+        totalUsersCount: action.count,
       };
 
     default:
@@ -103,5 +61,7 @@ function usersReducer(state = initialState, action) {
 export const followAC = (userID) => ({ type: FOLLOW, userID });
 export const unfollowAC = (userID) => ({ type: UNFOLLOW, userID });
 export const setUsersAC = (users) => ({ type: SET_USERS, users });
+export const setCurrentPageAC = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCountAC = (count) => ({ type: SET_TOTAL_USERS_COUNT, count });
 
 export default usersReducer;
