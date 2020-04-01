@@ -1,7 +1,7 @@
 import React from 'react';
 import './DialogCard.scss';
-import Userpic from '../../Userpic/Userpic';
 import { NavLink } from 'react-router-dom';
+import Userpic from '../../common/Userpic/Userpic';
 
 function DialogCard(props) {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Message.scss';
-import Userpic from '../../Userpic/Userpic';
+import Userpic from '../../common/Userpic/Userpic';
 
 function Message(props) {
 

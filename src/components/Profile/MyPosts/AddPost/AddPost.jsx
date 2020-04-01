@@ -1,6 +1,6 @@
 import React from 'react';
 import './AddPost.scss';
-import Userpic from '../../../Userpic/Userpic';
+import Userpic from '../../../common/Userpic/Userpic';
 import Button from '../../../Button/Button';
 
 function AddPost(props) {

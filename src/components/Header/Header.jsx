@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import logo from './images/logo.svg';
-import Userpic from '../Userpic/Userpic';
+import Userpic from '../common/Userpic/Userpic';
 
 function Header(props) {
   return (
