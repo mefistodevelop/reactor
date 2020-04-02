@@ -1,0 +1,39 @@
+.about {
+  padding: 25px;
+  max-width: 270px;
+  min-height: 300px;
+  background-color: #fff;
+
+  &__name {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 45px;
+    text-transform: capitalize;
+
+    &::after {
+      bottom: -12px;
+      left: 0;
+      width: 30px;
+      height: 1px;
+      content: "";
+      position: absolute;
+      background-color: #dc4734;
+    }
+  }
+
+  &__status {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__work {
+    margin-bottom: 20px;
+  }
+}
