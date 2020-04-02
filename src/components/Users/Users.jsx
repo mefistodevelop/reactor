@@ -5,16 +5,15 @@ import User from './User/User';
 function Users(props) {
 
   const { pageSize, totalUsersCount, currentPage, onCurrentPageChange } = props;
-  let pagesNumbers = [];
-  
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
+  let pagesNumbers = [];
 
   for (let i = 1; i <= pagesCount; i += 1) {
     pagesNumbers.push(i);
   }
 
   const pages = pagesNumbers.map((pageNumber) => {
-    const mod = currentPage === pageNumber ? ' pagination__button_active' : '';
+    const mod = (currentPage === pageNumber) ? ' pagination__button_active' : '';
     return (
       <button className={ "pagination__button" + mod } 
               type="button" 
@@ -30,9 +29,10 @@ function Users(props) {
         <User
           name={ user.name }
           status={ user.status }
-          userpic={ user.photos.small }
+          userpic={ user.photos.large }
           location={ user.location }
           followed={ user.followed }
+          id={ user.id }
         />
       </li>
     );

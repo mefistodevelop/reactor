@@ -1,14 +1,17 @@
 import React from 'react';
 import './User.scss';
-import Userpic from '../../Userpic/Userpic';
 import userImage from '../../../assets/images/user-ghost.png';
+import { NavLink } from 'react-router-dom';
+import Userpic from '../../common/Userpic/Userpic';
 
 function User(props) {
   return (
     <div className="user">
       <div className="user__main-wrapper">
         <div className="user__userpic">
-          <Userpic path={ props.userpic ? props.userpic : userImage } />
+          <NavLink to={'/profile/' + props.id }>
+            <Userpic path={ props.userpic ? props.userpic : userImage } />
+          </NavLink>
         </div>
         <div className="user__button">
           <button className="button">
