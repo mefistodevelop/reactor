@@ -1,11 +1,12 @@
 .profile {
   grid-area: profile-content;
   display: grid;
-  grid-template-columns: 7fr 4fr;
-  grid-template-rows: 270px 1fr;
+  grid-template-columns: 4fr 7fr;
+  grid-template-rows: 270px 58px 1fr;
   grid-template-areas: 
     'banner banner'
-    'posts friends';
+    'info info'
+    'about posts';
   background-color: rgb(18, 223, 223);
   height: 100%;
 
@@ -15,6 +16,31 @@
     height: 270px;
     max-height: 370px;
     background: url('./images/profile-banner.jpg') center center/ cover no-repeat;
+  }
+
+  &__user-info {
+    grid-area: info;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  &__userpic {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -170px;
+    left: 0;
+    width: 270px;
+    height: 270px;
+    background-color: #fff;
+  }
+
+  &__about {
+    grid-area: about;
+    position: relative;
+    padding-top: 130px;
+    margin-left: 20px;
   }
 
   &__my-posts {

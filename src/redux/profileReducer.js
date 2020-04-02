@@ -2,6 +2,7 @@ import { getUser, getCurrentTime } from "./usersData";
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const user = getUser();
 
 const initialState = {
@@ -26,6 +27,7 @@ const initialState = {
     },
   ],
   newPostText: '',
+  userProfile: null,
 };
 
 function profileReducer(state = initialState, action) {
@@ -54,12 +56,19 @@ function profileReducer(state = initialState, action) {
         newPostText: '',
       };
 
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        userProfile: action.profile,
+      };
+
     default:
       return state;
   }  
 }
 
-export const addPostActionCreator = () => ({ type: ADD_NEW_POST });
-export const updateNewPostTextActionCreator = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
+export const addPost = () => ({ type: ADD_NEW_POST });
+export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
+export const setUserProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
 
 export default profileReducer;
