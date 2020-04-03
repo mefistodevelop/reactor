@@ -38,4 +38,13 @@
     border: none;
     outline: none;
   }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+  }
+
+  &__profileicon {
+    margin-right: 10px;
+  }
 }
