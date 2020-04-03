@@ -14,7 +14,7 @@ function App() {
       <div className="content-wrapper">
         <Navbar />
         <div className="content">
-          <Route path={'/profile'} render={ () => <ProfileContainer /> }/>
+          <Route path={'/profile/:userId?'} render={ () => <ProfileContainer /> }/>
           <Route path={'/messages'} render={ () => <MessagesContainer /> }/>
           <Route path={'/users'} render={ () => <UsersContainer /> }/>
         </div>
