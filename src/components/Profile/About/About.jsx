@@ -6,7 +6,7 @@ function About(props) {
     <div className="about">
       <h3 className="about__name">{ props.profile.fullName }</h3>
       <p className="about__status">{ props.profile.aboutMe }</p>
-      <div className="about__work">work</div>
+      <div className="about__work">Job: { props.profile.lookingForAJobDescription }</div>
       <div className="about__location">location</div>
     </div>
   );
