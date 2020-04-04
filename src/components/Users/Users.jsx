@@ -33,6 +33,8 @@ function Users(props) {
           location={ user.location }
           followed={ user.followed }
           id={ user.id }
+          follow={ props.follow }
+          unfollow={ props.unfollow }
         />
       </li>
     );
