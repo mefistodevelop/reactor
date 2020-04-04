@@ -2,13 +2,25 @@ import React from 'react';
 import './User.scss';
 import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
+import * as axios from 'axios';
 
 function User(props) {
   const button = () => {
     if (props.followed) {
       return (
         <button className="button" onClick={ () => {
-          props.unfollow(props.id);
+          axios
+            .delete(`https://social-network.samuraijs.com/api/1.0/follow/${ props.id }`, {
+              withCredentials: true,
+              headers: {
+                "API-KEY": "07273082-6b6c-45d4-9373-3d4dc2812a9e",
+              }
+            })
+            .then((response) => {
+              if (response.data.resultCode === 0) {
+                props.unfollow(props.id);
+              }
+            });
         } }>
           unfollow
         </button>
@@ -16,7 +28,18 @@ function User(props) {
     } else {
       return (
         <button className="button" onClick={ () => {
-          props.follow(props.id);
+          axios
+            .post(`https://social-network.samuraijs.com/api/1.0/follow/${ props.id }`, {}, {
+              withCredentials: true,
+              headers: {
+                "API-KEY": "07273082-6b6c-45d4-9373-3d4dc2812a9e",
+              }
+            })
+            .then((response) => {
+              if (response.data.resultCode === 0) {
+                props.follow(props.id);
+              }
+            });
         }}>
           follow
         </button>
