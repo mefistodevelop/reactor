@@ -2,41 +2,29 @@ import React from 'react';
 import './User.scss';
 import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
-import * as axios from 'axios';
+import { usersApi } from '../../../api/api';
 
 function User(props) {
-  const button = () => {
+  const getButton = () => {
     if (props.followed) {
       return (
         <button className="button" onClick={ () => {
-          axios
-            .delete(`https://social-network.samuraijs.com/api/1.0/follow/${ props.id }`, {
-              withCredentials: true,
-              headers: {
-                "API-KEY": "07273082-6b6c-45d4-9373-3d4dc2812a9e",
-              }
-            })
+          usersApi.unfollowUser(props.id)
             .then((response) => {
-              if (response.data.resultCode === 0) {
+              if (response.resultCode === 0) {
                 props.unfollow(props.id);
               }
             });
-        } }>
+        }}>
           unfollow
         </button>
       );
     } else {
       return (
         <button className="button" onClick={ () => {
-          axios
-            .post(`https://social-network.samuraijs.com/api/1.0/follow/${ props.id }`, {}, {
-              withCredentials: true,
-              headers: {
-                "API-KEY": "07273082-6b6c-45d4-9373-3d4dc2812a9e",
-              }
-            })
+          usersApi.followUser(props.id)
             .then((response) => {
-              if (response.data.resultCode === 0) {
+              if (response.resultCode === 0) {
                 props.follow(props.id);
               }
             });
@@ -55,7 +43,7 @@ function User(props) {
           </NavLink>
         </div>
         <div className="user__button">
-          { button() }
+          { getButton() }
         </div>
       </div>
 
