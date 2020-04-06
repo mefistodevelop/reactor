@@ -8,6 +8,7 @@ import {
   setCurrentPage, 
   setTotalUsersCount,
   setIsFetching,
+  setFollowingInProgress,
 } from '../../redux/usersReducer';
 import Spinner from '../common/Spinner/Spinner';
 import { usersApi } from '../../api/api';
@@ -49,12 +50,13 @@ class UsersContainer extends React.Component {
           users={ this.props.users }
           follow={ this.props.follow }
           unfollow={ this.props.unfollow }
+          followingInProgress={ this.props.followingInProgress }
+          setFollowingInProgress={ this.props.setFollowingInProgress }
         />
       </>
     );
   };
 }
-
 
 const mapStateToProps = (state) => {
   return ({
@@ -63,10 +65,12 @@ const mapStateToProps = (state) => {
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
   });
 };
 
 export default connect(
   mapStateToProps,
-  { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, }
+  { follow, unfollow, setUsers, 
+    setCurrentPage, setTotalUsersCount, setIsFetching, setFollowingInProgress }
 )(UsersContainer);

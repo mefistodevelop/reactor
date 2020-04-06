@@ -8,12 +8,17 @@ function User(props) {
   const getButton = () => {
     if (props.followed) {
       return (
-        <button className="button" onClick={ () => {
+        <button className="button" 
+        disabled={ props.followingInProgress.some((id) => id === props.id) }
+        onClick={ () => {
+          props.setFollowingInProgress(true, props.id);
+
           usersApi.unfollowUser(props.id)
             .then((response) => {
               if (response.resultCode === 0) {
                 props.unfollow(props.id);
               }
+              props.setFollowingInProgress(false, props.id);
             });
         }}>
           unfollow
@@ -21,12 +26,17 @@ function User(props) {
       );
     } else {
       return (
-        <button className="button" onClick={ () => {
+        <button className="button" 
+          disabled={ props.followingInProgress.some((id) => id === props.id) }
+          onClick={ () => {
+          props.setFollowingInProgress(true, props.id);
+
           usersApi.followUser(props.id)
             .then((response) => {
               if (response.resultCode === 0) {
                 props.follow(props.id);
               }
+              props.setFollowingInProgress(false, props.id);
             });
         }}>
           follow

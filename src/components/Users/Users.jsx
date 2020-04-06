@@ -12,10 +12,10 @@ function Users(props) {
     pagesNumbers.push(i);
   }
 
-  const pages = pagesNumbers.map((pageNumber) => {
+  const pages = pagesNumbers.map((pageNumber, i) => {
     const mod = (currentPage === pageNumber) ? ' pagination__button_active' : '';
     return (
-      <button className={ "pagination__button" + mod } 
+      <button key={i} className={ "pagination__button" + mod } 
               type="button" 
               onClick={ () => onCurrentPageChange(pageNumber) }>
         { pageNumber }
@@ -35,6 +35,8 @@ function Users(props) {
           id={ user.id }
           follow={ props.follow }
           unfollow={ props.unfollow }
+          followingInProgress={ props.followingInProgress }
+          setFollowingInProgress={ props.setFollowingInProgress }
         />
       </li>
     );
