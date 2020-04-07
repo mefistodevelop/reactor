@@ -2,25 +2,15 @@ import React from 'react';
 import './User.scss';
 import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
-import { usersApi } from '../../../api/api';
 
 function User(props) {
   const getButton = () => {
     if (props.followed) {
       return (
         <button className="button" 
-        disabled={ props.followingInProgress.some((id) => id === props.id) }
-        onClick={ () => {
-          props.setFollowingInProgress(true, props.id);
-
-          usersApi.unfollowUser(props.id)
-            .then((response) => {
-              if (response.resultCode === 0) {
-                props.unfollow(props.id);
-              }
-              props.setFollowingInProgress(false, props.id);
-            });
-        }}>
+          disabled={ props.followingInProgress.some((id) => id === props.id) }
+          onClick={ () => props.unfollow(props.id)
+        }>
           unfollow
         </button>
       );
@@ -28,17 +18,8 @@ function User(props) {
       return (
         <button className="button" 
           disabled={ props.followingInProgress.some((id) => id === props.id) }
-          onClick={ () => {
-          props.setFollowingInProgress(true, props.id);
-
-          usersApi.followUser(props.id)
-            .then((response) => {
-              if (response.resultCode === 0) {
-                props.follow(props.id);
-              }
-              props.setFollowingInProgress(false, props.id);
-            });
-        }}>
+          onClick={ () => props.follow(props.id)
+        }>
           follow
         </button>
       );
