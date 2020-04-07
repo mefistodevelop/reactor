@@ -43,3 +43,13 @@ export const profileApi = {
     );
   },
 };
+
+export const authApi = {
+  getAuthData() {
+    return (
+      instance
+      .get('/auth/me')
+      .then((response) => response.data)
+    );
+  }
+};
