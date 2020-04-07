@@ -1,4 +1,5 @@
 import { getUser, getCurrentTime } from "./usersData";
+import { profileApi } from "../api/api";
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
@@ -69,6 +70,15 @@ function profileReducer(state = initialState, action) {
 
 export const addPost = () => ({ type: ADD_NEW_POST });
 export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
-export const setUserProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
+export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
+
+export const setUserProfile = (userId) => {
+  return (dispatch) => {
+    profileApi.getUserProfile(userId)
+      .then((response) => {
+        dispatch(setProfile(response));
+      });
+  };
+};
 
 export default profileReducer;
