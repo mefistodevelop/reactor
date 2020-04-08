@@ -17,13 +17,14 @@ class ProfileContainer extends React.Component {
 
   render() {
     return (
-      <Profile { ...this.props } profile={ this.props.profile }  />
+      <Profile { ...this.props } />
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   profile: state.profilePage.userProfile,
+  isAuth: state.auth.isAuth,
 });
 
 export default connect(mapStateToProps, { setUserProfile })(withRouter(ProfileContainer));

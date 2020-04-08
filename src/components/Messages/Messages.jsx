@@ -3,8 +3,11 @@ import './Messages.scss';
 import Message from './Message/Message';
 import DialogCard from './DialogCard/DialogCard';
 import AddMessage from './AddMessage/AddMessage';
+import { Redirect } from 'react-router-dom';
 
 function Messages(props) {
+
+  if (!props.isAuth) return <Redirect to={'/login'}/>
 
   const dialogsList = props.messagesPage.friends;
   const messagesStore = props.messagesPage.messagesStore;

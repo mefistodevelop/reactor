@@ -1,8 +1,11 @@
 import React from 'react';
 import './Users.scss';
 import User from './User/User';
+import { Redirect } from 'react-router-dom';
 
 function Users(props) {
+
+  if (!props.isAuth) return <Redirect to={ '/login' } />
 
   const { pageSize, totalUsersCount, currentPage, onCurrentPageChange } = props;
   const pagesCount = Math.ceil(totalUsersCount / pageSize);

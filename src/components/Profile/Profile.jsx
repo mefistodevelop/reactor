@@ -4,8 +4,12 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 import Userpic from '../common/Userpic/Userpic';
 import About from './About/About';
 import Spinner from '../common/Spinner/Spinner';
+import { Redirect } from 'react-router-dom';
 
 function Profile(props) {
+console.log(props)
+  if (!props.isAuth) return <Redirect to={'/login'} />
+
   if (!props.profile) {
     return <Spinner />
   }
