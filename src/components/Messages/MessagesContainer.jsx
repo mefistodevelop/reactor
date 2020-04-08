@@ -1,25 +1,15 @@
 import Messages from './Messages';
-import { updateNewMessageTextActionCreator, addMessageActionCreator } from '../../redux/messagesReducer';
+import { updateNewMessageText, addMessage } from '../../redux/messagesReducer';
 import { connect } from 'react-redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 const mapStateToProps = (state) => {
   return {
     messagesPage: state.messagesPage,
-    isAuth: state.auth.isAuth,
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateNewMessageText: (newText) => {
-      dispatch(updateNewMessageTextActionCreator(newText));
-    },
-    addMessage: () => {
-      dispatch(addMessageActionCreator());
-    },
-  };
-}
-
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
-
-export default MessagesContainer;
+export default compose(
+  connect(mapStateToProps, { updateNewMessageText, addMessage, }),
+  withAuthRedirect)(Messages);

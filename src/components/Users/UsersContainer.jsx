@@ -8,10 +8,11 @@ import {
   setCurrentPage, 
   setTotalUsersCount,
   setIsFetching,
-  setFollowingInProgress,
   getUsers,
 } from '../../redux/usersReducer';
 import Spinner from '../common/Spinner/Spinner';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 class UsersContainer extends React.Component {
 
@@ -36,8 +37,6 @@ class UsersContainer extends React.Component {
           follow={ this.props.follow }
           unfollow={ this.props.unfollow }
           followingInProgress={ this.props.followingInProgress }
-          setFollowingInProgress={ this.props.setFollowingInProgress }
-          isAuth={ this.props.isAuth }
         />
       </>
     );
@@ -52,13 +51,15 @@ const mapStateToProps = (state) => {
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
     followingInProgress: state.usersPage.followingInProgress,
-    isAuth: state.auth.isAuth,
   });
 };
 
-export default connect(
-  mapStateToProps,
-  { follow, unfollow, setUsers, 
-    setCurrentPage, setTotalUsersCount, setIsFetching,
-    setFollowingInProgress, getUsers, }
+export default compose(
+  connect(mapStateToProps,
+    { follow, unfollow, setUsers, 
+      setCurrentPage, setTotalUsersCount, setIsFetching,
+      getUsers,
+    }
+  ),
+  withAuthRedirect,
 )(UsersContainer);
