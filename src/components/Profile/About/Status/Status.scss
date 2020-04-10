@@ -1,0 +1,40 @@
+.status {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color: #636262;
+
+  &__text {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: #f0f2f5;
+    }
+  }
+
+  &__edit {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    box-shadow: 0 0 4px #e0dfdf;
+    transition: all 5s;
+  }
+
+  &__edit-field {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc9c9;
+    border-radius: 4px;
+    outline: none;
+  }
+
+  &__button{
+    width: 100px;
+    height: 33px;
+  }
+}
