@@ -13,11 +13,10 @@ function Profile(props) {
 
   return (
     <main className="profile">
-      <div className="profile__banner"/>
+      <div className="profile__userpic">
+        <Userpic path={ props.profile.photos.large } size='large' />
+      </div>
       <div className="profile__about">
-        <div className="profile__userpic">
-          <Userpic path={ props.profile.photos.large } size='large' />
-        </div>
         <About profile={ props.profile } />
       </div>
       <div className="profile__my-posts">
