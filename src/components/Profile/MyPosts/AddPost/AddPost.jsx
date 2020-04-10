@@ -33,7 +33,9 @@ function AddPost(props) {
           placeholder="write something"
           value={ props.newPostText }
         />
-        <Button type="button" text="share" onClick={ onAddPost } />
+        <div className="add-post__button">
+          <Button type="button" text="share" onClick={ onAddPost } />
+        </div>
       </div>
     </div>
   );
