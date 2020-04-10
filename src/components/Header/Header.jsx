@@ -13,16 +13,15 @@ function Header(props) {
             <div className="site-header__profileicon">
               <Userpic path="https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg" />
             </div>
-            <NavLink className="site-header__login-link" to={'/login'}>
               <span className="site-header__login">{ props.login }</span>
-            </NavLink>
           </div>
-          
         </NavLink>
       );
     } else {
       return (
-        <span>log in</span>
+        <NavLink to={'/login'}>
+          <span>log in</span>
+        </NavLink>
       );
     }
   }
