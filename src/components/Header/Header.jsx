@@ -8,7 +8,7 @@ function Header(props) {
   const auth = () => {
     if (props.isAuth) {
       return (
-        <NavLink to={ '/profile/' + props.id }>
+        <NavLink className="site-header__login-link" to={ '/profile/' + props.id }>
           <div className="site-header__auth">
             <div className="site-header__profileicon">
               <Userpic path="https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg" />
@@ -19,7 +19,7 @@ function Header(props) {
       );
     } else {
       return (
-        <NavLink to={'/login'}>
+        <NavLink className="site-header__login-link" to={'/login'}>
           <span>log in</span>
         </NavLink>
       );

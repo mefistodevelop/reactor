@@ -23,7 +23,7 @@
     color: #dc4734;
     text-decoration: none;
 
-    @media (max-width: 576px) {
+    @media (max-width: 992px) {
       font-size: 30px;
     }
   }
@@ -46,5 +46,11 @@
 
   &__profileicon {
     margin-right: 10px;
+  }
+
+  &__login-link {
+    text-decoration: none;
+    color: #dc4734;
+    font-weight: 700;
   }
 }
