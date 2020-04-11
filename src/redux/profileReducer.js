@@ -30,7 +30,7 @@ const initialState = {
   ],
   newPostText: '',
   userProfile: null,
-  userStatus: null,
+  userStatus: '',
 };
 
 function profileReducer(state = initialState, action) {
@@ -96,8 +96,21 @@ export const getUserStatus = (id) => {
       .getUserStatus(id)
       .then((response) => {
         dispatch(setUserStatus(response.data));
+        console.log(response.data)
       });
   }
-}; 
+};
+
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    profileApi
+      .updateUserStatus(status)
+      .then((response) => {
+        if (response.data.resultCode === 0) {
+          dispatch(setUserStatus(status));
+        }
+      });
+  };
+}
 
 export default profileReducer;

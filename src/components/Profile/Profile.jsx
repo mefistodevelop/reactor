@@ -17,7 +17,11 @@ function Profile(props) {
         <Userpic path={ props.profile.photos.large } size='large' />
       </div>
       <div className="profile__about">
-        <About profile={ props.profile } userStatus={ props.userStatus } />
+        <About
+          profile={ props.profile }
+          userStatus={ props.userStatus }
+          updateStatus={ props.updateStatus }
+        />
       </div>
       <div className="profile__my-posts">
         <MyPostsContainer />

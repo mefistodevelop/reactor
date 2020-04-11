@@ -7,7 +7,7 @@ function About(props) {
     <div className="about">
       <h3 className="about__name">{ props.profile.fullName }</h3>
       <div className="about__status">
-        <Status text={ props.userStatus }/>
+        <Status userStatus={ props.userStatus } updateStatus={ props.updateStatus }/>
       </div>
       <div className="about__about-me">
         <span className="about__info-title">About me: </span>
