@@ -4,6 +4,7 @@ import { profileApi } from "../api/api";
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 const user = getUser();
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   ],
   newPostText: '',
   userProfile: null,
+  userStatus: null,
 };
 
 function profileReducer(state = initialState, action) {
@@ -63,6 +65,12 @@ function profileReducer(state = initialState, action) {
         userProfile: action.profile,
       };
 
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        userStatus: action.status,
+      };
+
     default:
       return state;
   }  
@@ -71,6 +79,7 @@ function profileReducer(state = initialState, action) {
 export const addPost = () => ({ type: ADD_NEW_POST });
 export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
 export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
+const setUserStatus = (status) => ({ status, type: SET_USER_STATUS });
 
 export const setUserProfile = (userId) => {
   return (dispatch) => {
@@ -80,5 +89,15 @@ export const setUserProfile = (userId) => {
       });
   };
 };
+
+export const getUserStatus = (id) => {
+  return (dispatch) => {
+    profileApi
+      .getUserStatus(id)
+      .then((response) => {
+        dispatch(setUserStatus(response.data));
+      });
+  }
+}; 
 
 export default profileReducer;
