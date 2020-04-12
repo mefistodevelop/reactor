@@ -96,7 +96,6 @@ export const getUserStatus = (id) => {
       .getUserStatus(id)
       .then((response) => {
         dispatch(setUserStatus(response.data));
-        console.log(response.data)
       });
   }
 };
