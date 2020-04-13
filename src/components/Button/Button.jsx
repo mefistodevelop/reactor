@@ -2,14 +2,12 @@ import React from 'react';
 import './Button.scss';
 
 function Button(props) {
-  
-  const noButtonFunctionWarning = () => alert('action not defined');
 
   return (
     <button 
       className="button" 
       type={ props.type || 'button' } 
-      onClick={ props.onClick || noButtonFunctionWarning }
+      onClick={ props.onClick || undefined }
     >
       { props.text }
     </button>
