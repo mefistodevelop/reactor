@@ -20,7 +20,7 @@ function Header(props) {
     } else {
       return (
         <NavLink className="site-header__login-link" to={'/login'}>
-          <span>log in</span>
+          <span>Sign in</span>
         </NavLink>
       );
     }
