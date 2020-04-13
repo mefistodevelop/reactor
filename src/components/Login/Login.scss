@@ -1,1 +1,9 @@
-.login {}
+.login {
+  
+  &__form {
+    margin: 2rem auto 0;
+    width: 100%;
+    max-width: 380px;
+    min-height: 270px;  
+  }
+}
