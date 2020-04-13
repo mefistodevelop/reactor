@@ -23,7 +23,7 @@ function Navbar(props) {
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'music'}>
+            <NavLink className={'navbar__navigation-link'} to={'/music'}>
               Music
             </NavLink>
           </li>
