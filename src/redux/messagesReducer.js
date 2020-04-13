@@ -1,6 +1,5 @@
 import { getCurrentTime, getUser, getFriends } from './usersData';
 
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 const user = getUser();
 const friends = getFriends();
@@ -36,24 +35,18 @@ const initialState = {
       time: '21:40',
     },
   ],
-  newMessageText: '',
 };
 
 function messagesReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT:
-      return {
-        ...state,
-        newMessageText: action.text,
-      };
-    
+
     case ADD_NEW_MESSAGE:
       const lastId = state.messagesStore[state.messagesStore.length - 1].id;
       
       const newMessage = {
         id: lastId + 1,
         userpic: state.user.userpic,
-        text: state.newMessageText,
+        text: action.message,
         time: state.getCurrentTime(),
         mod: 'me',
       };
@@ -61,7 +54,6 @@ function messagesReducer(state = initialState, action) {
       return {
         ...state,
         messagesStore: [...state.messagesStore, newMessage],
-        newMessageText: '',
       };
     
     default:
@@ -69,10 +61,6 @@ function messagesReducer(state = initialState, action) {
   }  
 }
 
-export const updateNewMessageText = (newText) => ({
-  type: UPDATE_NEW_MESSAGE_TEXT, 
-  text: newText,
-});
-export const addMessage = () => ({ type: ADD_NEW_MESSAGE });
+export const addMessage = (message) => ({ message, type: ADD_NEW_MESSAGE });
 
 export default messagesReducer;

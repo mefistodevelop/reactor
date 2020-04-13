@@ -1,29 +1,19 @@
 import React from 'react';
 import './AddMessage.scss';
-import Button from '../../Button/Button';
+import { reduxForm } from 'redux-form';
+import AddMessageForm from './AddMessageForm/AddMessageForm';
 
 function AddMessage(props) {
 
-  const onNewMessageChange = (event) => {
-    const text = event.target.value;
-    props.updateNewMessageText(text);
+  const addNewMessage = (formData) => {
+    props.addMessage(formData.newMessageText);
   }
 
-  const addNewMessage = () => {
-    props.addMessage();
-  }
+  const AddMessageReduxForm = reduxForm({ form: 'newMessage' })(AddMessageForm);
 
   return (
     <div className="add-message">
-      <textarea 
-        className="add-message__field"
-        placeholder="Text Message"
-        value={ props.newMessageText }
-        onChange={ onNewMessageChange }
-      />
-      <div className="add-message__button">
-        <Button className="button" type="button" text="Send" onClick={ addNewMessage } />
-      </div>
+      <AddMessageReduxForm onSubmit={ addNewMessage } />
     </div>
   );
 }

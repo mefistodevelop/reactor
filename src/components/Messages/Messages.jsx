@@ -45,11 +45,7 @@ function Messages(props) {
         { chat }
 
         <div className="messages__add-message">
-          <AddMessage 
-            updateNewMessageText={ props.updateNewMessageText }
-            addMessage={ props.addMessage }
-            newMessageText={ props.messagesPage.newMessageText }
-          />
+          <AddMessage addMessage={ props.addMessage } />
         </div>
       </div>
     </main>
