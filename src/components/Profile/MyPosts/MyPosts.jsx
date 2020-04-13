@@ -22,9 +22,7 @@ function MyPosts(props) {
       <div className="my-posts__add-post">
         <AddPost
           addPost={ props.addPost }
-          updateNewPostText={ props.updateNewPostText }
           userData={ props.profilePage.user } 
-          newPostText={ props.profilePage.newPostText }
         />
       </div>
       

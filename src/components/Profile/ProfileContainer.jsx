@@ -12,7 +12,7 @@ class ProfileContainer extends React.Component {
 
     if (this.props.isAuth) {
       if (!userId) {
-        userId = this.props.authorizedUserId;
+        userId = 6884;
       }
   
     }

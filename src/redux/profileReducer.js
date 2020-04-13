@@ -2,7 +2,6 @@ import { getUser, getCurrentTime } from "./usersData";
 import { profileApi } from "../api/api";
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const user = getUser();
@@ -28,18 +27,12 @@ const initialState = {
       likes: 201,
     },
   ],
-  newPostText: '',
   userProfile: null,
   userStatus: '',
 };
 
 function profileReducer(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_NEW_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.text,
-      };
 
     case ADD_NEW_POST:
       const lastId = state.posts[state.posts.length - 1].id;
@@ -49,14 +42,13 @@ function profileReducer(state = initialState, action) {
         name: state.user.name,
         userpic: state.user.userpic,
         time: state.getCurrentTime(),
-        text: state.newPostText,
+        text: action.post,
         likes: 0,
       };
 
       return {
         ...state,
         posts: [...state.posts, newPost],
-        newPostText: '',
       };
 
     case SET_USER_PROFILE:
@@ -76,8 +68,7 @@ function profileReducer(state = initialState, action) {
   }  
 }
 
-export const addPost = () => ({ type: ADD_NEW_POST });
-export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, text: newText });
+export const addPost = (post) => ({ post, type: ADD_NEW_POST });
 export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
 const setUserStatus = (status) => ({ status, type: SET_USER_STATUS });
 

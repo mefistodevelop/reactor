@@ -1,24 +1,16 @@
 import React from 'react';
 import './AddPost.scss';
 import Userpic from '../../../common/Userpic/Userpic';
-import Button from '../../../Button/Button';
+import { reduxForm } from 'redux-form';
+import AddPostForm from './AddPostForm/AddPostForm';
 
 function AddPost(props) {
 
-  const newPost = React.createRef();
-
-  const getText = () => {
-    return newPost.current.value;
+  const onAddPost = (formData) => {
+    props.addPost(formData.newPost);
   }
 
-  const newPostTextOnChange = () => {
-    const text = getText();
-    props.updateNewPostText(text);
-  }
-
-  const onAddPost = () => {
-    props.addPost();
-  }
+  const AddPostReduxForm = reduxForm({ form: 'newPost' })(AddPostForm);
 
   return (
     <div className="add-post">
@@ -26,16 +18,7 @@ function AddPost(props) {
         <Userpic path={ props.userData.userpic } />
       </div>
       <div className="add-post__form">
-        <textarea
-          className="add-post__field"
-          ref={ newPost }
-          onChange={ newPostTextOnChange }
-          placeholder="write something"
-          value={ props.newPostText }
-        />
-        <div className="add-post__button">
-          <Button type="button" text="share" onClick={ onAddPost } />
-        </div>
+        <AddPostReduxForm onSubmit={ onAddPost } />
       </div>
     </div>
   );
