@@ -1,0 +1,75 @@
+.header-auth {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &__profileicon {
+    margin-right: 10px;
+  }
+
+  &__login-link {
+    text-decoration: none;
+    color: #dc4734;
+    font-weight: 700;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 54px;
+    left: 0;
+    display: none;
+    padding: 10px;
+    width: 113px;
+    min-height: 70px;
+    border: 1px solid transparent;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    background-color: #fff;
+    z-index: 3;
+    box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.2);
+
+    &_open {
+      display: block;
+    }
+  }
+
+  &__menu-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__menu-item {
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+    }
+  }
+
+  &__menu-link {
+    text-decoration: none;
+    color: #333;
+  }
+
+  &__button {
+    margin: 0;
+    padding: 0;
+    display: block;
+    color: #333;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      font-weight: 700;
+    }
+  }
+}

@@ -38,19 +38,4 @@
     border: none;
     outline: none;
   }
-
-  &__auth {
-    display: flex;
-    align-items: center;
-  }
-
-  &__profileicon {
-    margin-right: 10px;
-  }
-
-  &__login-link {
-    text-decoration: none;
-    color: #dc4734;
-    font-weight: 700;
-  }
 }
