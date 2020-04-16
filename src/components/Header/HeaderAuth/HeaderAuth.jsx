@@ -12,7 +12,7 @@ class HeaderAuth extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('mousedown', this.handleClickOutside);
+    document.addEventListener('mousedown', this.handleClickOutsidegit);
   }
 
   componentWillUnmount() {
