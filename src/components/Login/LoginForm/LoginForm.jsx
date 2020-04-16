@@ -28,6 +28,7 @@ function LoginForm(props) {
           component="input"
           type="checkbox"
           name="rememberMe"
+          checked
         />
         <span className="login-form__checkbox-button" />
         Remember me
