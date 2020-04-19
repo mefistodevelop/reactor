@@ -21,6 +21,8 @@ function Profile(props) {
           profile={ props.profile }
           userStatus={ props.userStatus }
           updateStatus={ props.updateStatus }
+          authorizedUserId={ props.authorizedUserId }
+          userId={ props.userId }
         />
       </div>
       <div className="profile__my-posts">

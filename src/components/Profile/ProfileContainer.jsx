@@ -7,21 +7,25 @@ import { compose } from 'redux';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 class ProfileContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.userId = null;
+  }
   
   componentDidMount = () => {
-    let userId = this.props.match.params.userId;
+    this.userId = this.props.match.params.userId;
 
-    if (!userId) {
-      userId = this.props.authorizedUserId;
+    if (!this.userId) {
+      this.userId = this.props.authorizedUserId;
     }
 
-    this.props.setUserProfile(userId);
-    this.props.getUserStatus(userId);
+    this.props.setUserProfile(this.userId);
+    this.props.getUserStatus(this.userId);
   }
 
   render() {
     return (
-      <Profile { ...this.props } />
+      <Profile { ...this.props } userId={ this.userId } />
     );
   }
 }

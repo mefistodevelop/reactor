@@ -9,8 +9,18 @@ class Status extends React.Component {
     status: this.props.userStatus,
   };
 
+  isMyPage() {
+    if (this.props.userId === this.props.authorizedUserId) {
+      return true;
+    }
+
+    return false;
+  }
+
   activateEditMode = () => {
-    this.setState({ editMode: true });
+    if (this.isMyPage()) {
+      this.setState({ editMode: true });
+    }
   }
 
   deactivateEditMode = () => {
@@ -32,15 +42,25 @@ class Status extends React.Component {
     }
   }
 
+  setStatusMessage() {
+    let statusMessage = '';
+
+    if (this.props.userStatus) {
+      statusMessage = this.props.userStatus;
+    } else {
+      statusMessage = this.isMyPage() ? 'set a status message' : '';
+    }
+
+    return statusMessage;
+  }
+
   render() {
     return (
       <div className="status">
 
         { !this.state.editMode && 
-          <p className="status__text"
-            onClick={ this.activateEditMode }
-          >
-            { this.props.userStatus || 'set a status message' }
+          <p className="status__text" onClick={ this.activateEditMode }>
+            { this.setStatusMessage() }
           </p>
         }
 
