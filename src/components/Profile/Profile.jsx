@@ -8,7 +8,7 @@ import Spinner from '../common/Spinner/Spinner';
 function Profile(props) {
 
   if (!props.profile) {
-    return <Spinner />
+    return <div className="profile__spinner"><Spinner size="100" /></div>;
   }
 
   return (
