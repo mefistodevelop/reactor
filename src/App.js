@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     if (!this.props.initialized) {
-      return <Spinner size='100' />
+      return <div className="spinner"><Spinner size='100' /></div>
     }
 
     return (
