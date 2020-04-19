@@ -1,10 +1,14 @@
 import React from 'react';
 import spinnerImage from './images/spinner.svg';
 
-function Spinner() {
+function Spinner(props) {
   return (
     <div className="spinner">
-      <img src={ spinnerImage } alt="loading progress spinner" className="spinner__image"/>
+      <img className="spinner__image"
+        src={ spinnerImage }
+        width={ props.size }
+        alt="loading progress spinner"
+      />
     </div>
   );
 }
