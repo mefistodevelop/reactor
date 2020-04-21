@@ -90,15 +90,15 @@ export const setFollowingInProgress = (inProgress, id) => ({
   type: SET_FOLLOWING_IN_PROGRESS
 });
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page, pageSize) => {
   return (dispatch) => {
     dispatch(setIsFetching(true));
-    usersApi.getUsers(currentPage, pageSize)
+    usersApi.getUsers(page, pageSize)
       .then((response) => {
         dispatch(setIsFetching(false));
         dispatch(setUsers(response.items));
         dispatch(setTotalUsersCount(response.totalCount));
-        dispatch(setCurrentPage(currentPage));
+        dispatch(setCurrentPage(page));
       });
   };
 }
