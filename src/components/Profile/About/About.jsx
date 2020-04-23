@@ -1,13 +1,14 @@
 import React from 'react';
 import './About.scss';
 import Status from './Status/Status';
+import StatusWithHooks from './Status/StatusWithHooks';
 
 function About(props) {
   return (
     <div className="about">
       <h3 className="about__name">{ props.profile.fullName }</h3>
       <div className="about__status">
-        <Status
+        <StatusWithHooks
           userStatus={ props.userStatus }
           updateStatus={ props.updateStatus }
           authorizedUserId={ props.authorizedUserId }
