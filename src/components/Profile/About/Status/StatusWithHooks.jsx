@@ -1,30 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Status.scss';
 import Button from '../../../Button/Button';
-import { useState } from 'react';
 
 const StatusWithHooks = (props) => {
-
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(props.userStatus);
-
-  const activateEditMode = () => {
-    if (isMyPage()) {
-      setEditMode(true);
-    };
-  }
-
-  const deactivateEditMode = () => {
-    setEditMode(false);
-    props.updateStatus(status);
-  }
 
   const isMyPage = () => {
     if (props.userId === props.authorizedUserId) {
       return true;
     }
     return false;
-  }
+  };
+
+  const activateEditMode = () => {
+    if (isMyPage()) {
+      setEditMode(true);
+    }
+  };
+
+  const deactivateEditMode = () => {
+    setEditMode(false);
+    props.updateStatus(status);
+  };
 
   const setStatusMessage = () => {
     let statusMessage = '';
