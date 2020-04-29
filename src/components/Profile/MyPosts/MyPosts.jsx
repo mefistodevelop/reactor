@@ -4,18 +4,16 @@ import Post from './Post/Post';
 import AddPost from './AddPost/AddPost';
 
 const MyPosts = ({ posts, userpic, addPost }) => {
-  const myPosts = posts.map((post) => {
-    return (
-      <Post
-        key={post.id}
-        name={post.name}
-        userpic={post.userpic}
-        time={post.time}
-        text={post.text}
-        likes={post.likes}
-      />
-    );
-  });
+  const myPosts = posts.map((post) => (
+    <Post
+      key={post.id}
+      name={post.name}
+      userpic={post.userpic}
+      time={post.time}
+      text={post.text}
+      likes={post.likes}
+    />
+  )).reverse();
 
   return (
     <div className="my-posts">
