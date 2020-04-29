@@ -1,14 +1,12 @@
-import { getUser, getCurrentTime } from "./usersData";
+import { getCurrentTime } from "./usersData";
 import { profileApi } from "../api/api";
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
-const user = getUser();
 
 const initialState = {
   getCurrentTime: getCurrentTime,
-  user,
   posts: [
     {
       id: 1,
@@ -20,8 +18,8 @@ const initialState = {
     },
     {
       id: 2,
-      name: user.name,
-      userpic: user.userpic,
+      name: 'User name',
+      userpic: 'https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg',
       time: 'yesterday',
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, error porro nemo libero doloremque beatae accusamus fugiat culpa placeat perspiciatis?',
       likes: 201,
@@ -39,8 +37,8 @@ function profileReducer(state = initialState, action) {
       
       const newPost = {
         id: lastId + 1,
-        name: state.user.name,
-        userpic: state.user.userpic,
+        name: state.userProfile.fullName,
+        userpic: state.userProfile.photos.small,
         time: state.getCurrentTime(),
         text: action.post,
         likes: 0,
