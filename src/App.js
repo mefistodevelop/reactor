@@ -19,7 +19,7 @@ class App extends React.Component {
 
   render() {
     if (!this.props.initialized) {
-      return <div className="spinner"><Spinner size='100' /></div>
+      return <div className="spinner"><Spinner size="100" /></div>
     }
 
     return (
@@ -28,10 +28,11 @@ class App extends React.Component {
         <div className="content-wrapper">
           <Navbar />
           <div className="content">
-            <Route path={'/profile/:userId?'} render={ () => <ProfileContainer /> }/>
-            <Route path={'/messages'} render={ () => <MessagesContainer /> }/>
-            <Route path={'/users'} render={ () => <UsersContainer /> }/>
-            <Route path={'/login'} render={ () => <Login /> }/>
+            <Route exact path="/" render={() => <Login />} />
+            <Route path={'/profile/:userId?'} render={() => <ProfileContainer />} />
+            <Route path={'/messages'} render={() => <MessagesContainer />} />
+            <Route path={'/users'} render={() => <UsersContainer />} />
+            <Route path={'/login'} render={() => <Login />} />
           </div>
         </div>
       </div>
