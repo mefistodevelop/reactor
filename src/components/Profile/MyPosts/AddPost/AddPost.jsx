@@ -7,7 +7,9 @@ import AddPostForm from './AddPostForm/AddPostForm';
 function AddPost({ addPost, userpic }) {
 
   const onAddPost = (formData) => {
-    addPost(formData.newPost);
+    if (formData.newPost && formData.newPost.trim()) {
+      addPost(formData.newPost.trim());
+    }
   }
 
   const AddPostReduxForm = reduxForm({ form: 'newPost' })(AddPostForm);
