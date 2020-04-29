@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import './Status.scss';
 import Button from '../../../Button/Button';
+import { useEffect } from 'react';
 
 const StatusWithHooks = (props) => {
   const [editMode, setEditMode] = useState(false);
   const [status, setStatus] = useState(props.userStatus);
+
+
+  useEffect(() => {
+    setStatus(props.userStatus)
+  }, [props.userStatus]);
 
   const isMyPage = () => {
     if (props.userId === props.authorizedUserId) {
