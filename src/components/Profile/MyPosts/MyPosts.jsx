@@ -3,7 +3,7 @@ import './MyPosts.scss';
 import Post from './Post/Post';
 import AddPost from './AddPost/AddPost';
 
-const MyPosts = ({ posts, user, addPost }) => {
+const MyPosts = ({ posts, userpic, addPost }) => {
   const myPosts = posts.map((post) => {
     return (
       <Post
@@ -22,7 +22,7 @@ const MyPosts = ({ posts, user, addPost }) => {
       <div className="my-posts__add-post">
         <AddPost
           addPost={addPost}
-          userData={user}
+          userpic={userpic}
         />
       </div>
 

@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state) => {
   return {
     posts: state.profilePage.posts,
-    user: state.profilePage.user,
+    userpic: state.auth.userPhotos.small,
   };
 }
 
-const MyPostsContainer = connect(mapStateToProps, { addPost, })(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, { addPost })(MyPosts);
 
 export default MyPostsContainer;

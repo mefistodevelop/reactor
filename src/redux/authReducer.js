@@ -1,13 +1,15 @@
-import { authApi } from "../api/api";
+import { authApi, profileApi } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 const SET_USER_DATA = 'SET-USER-DATA';
+const SET_USER_PHOTOS = 'SET_USER_PHOTOS';
 
 const initialState = {
   id: null,
   email: null,
   login: null,
   isAuth: false,
+  userPhotos: [],
 };
 
 const  authReducer = (state = initialState, action) => {
@@ -17,6 +19,12 @@ const  authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
+      };
+
+    case SET_USER_PHOTOS:
+      return {
+        ...state,
+        userPhotos: action.payload,
       };
 
     default:
@@ -29,6 +37,8 @@ export const setAuthUserData = (id, email, login, isAuth) => ({
   data: { id, email, login, isAuth }
 });
 
+const setUserPhotos = (payload) => ({ payload, type: SET_USER_PHOTOS });
+
 export const getAuthData = () => {
   return (dispatch) => {
     return authApi
@@ -37,6 +47,12 @@ export const getAuthData = () => {
         if (response.resultCode === 0) {
           const { id, email, login } = response.data;
           dispatch(setAuthUserData(id, email, login, true));
+
+          profileApi.getUserProfile(id).then((response) => {
+            if (response.resultCode === 0) {
+              dispatch(setUserPhotos(response.photos));
+            }
+          });
         }
       });
   };

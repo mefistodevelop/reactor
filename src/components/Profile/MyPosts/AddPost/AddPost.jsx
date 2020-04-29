@@ -4,10 +4,10 @@ import Userpic from '../../../common/Userpic/Userpic';
 import { reduxForm } from 'redux-form';
 import AddPostForm from './AddPostForm/AddPostForm';
 
-function AddPost(props) {
+function AddPost({ addPost, userpic }) {
 
   const onAddPost = (formData) => {
-    props.addPost(formData.newPost);
+    addPost(formData.newPost);
   }
 
   const AddPostReduxForm = reduxForm({ form: 'newPost' })(AddPostForm);
@@ -15,10 +15,10 @@ function AddPost(props) {
   return (
     <div className="add-post">
       <div className="add-post__userpic">
-        <Userpic path={ props.userData.userpic } />
+        <Userpic path={userpic} />
       </div>
       <div className="add-post__form">
-        <AddPostReduxForm onSubmit={ onAddPost } />
+        <AddPostReduxForm onSubmit={onAddPost} />
       </div>
     </div>
   );

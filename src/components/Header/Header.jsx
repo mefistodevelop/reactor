@@ -10,21 +10,27 @@ function Header(props) {
       <div className="site-header__container">
         <div className="site-header__logo">
           <a href="index.html" className="site-header__logo-link">
-            <img src={logo} width="40" alt="Reactor logo" className="site-header__logo-image"/>
+            <img
+              className="site-header__logo-image"
+              src={logo}
+              width="40"
+              alt="Reactor logo"
+            />
             Reactor
           </a>
         </div>
-        
+
         <div className="site-header__search">
           <input type="text" className="site-header__search-bar" placeholder="Search" />
         </div>
-        
+
         <div className="site-header__auth-wrapper">
-          <HeaderAuth 
-            id={ props.id }
-            login={ props.login }
-            signOut={ props.signOut }
-            isAuth={ props.isAuth }
+          <HeaderAuth
+            id={props.id}
+            login={props.login}
+            signOut={props.signOut}
+            isAuth={props.isAuth}
+            userpic={props.userpic}
           />
         </div>
       </div>

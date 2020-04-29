@@ -41,18 +41,18 @@ class HeaderAuth extends React.Component {
 
     if (this.props.isAuth) {
       return (
-        <div className="header-auth" onClick={ this.openMenu } ref={ this.setWrapperRef }>
+        <div className="header-auth" onClick={this.openMenu} ref={this.setWrapperRef}>
           <div className="header-auth__profileicon">
-            <Userpic path="https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg" />
+            <Userpic path={this.props.userpic} />
           </div>
-          <span className="header-auth__login">{ this.props.login }</span>
-          <div className={ 'header-auth__menu' + menuMod }>
+          <span className="header-auth__login">{this.props.login}</span>
+          <div className={'header-auth__menu' + menuMod}>
             <ul className="header-auth__menu-list" >
               <li className="header-auth__menu-item">
                 <NavLink className="header-auth__menu-link" to="/profile">Profile</NavLink>
               </li>
               <li className="header-auth__menu-item">
-                <button className="header-auth__button" onClick={ this.props.signOut }>
+                <button className="header-auth__button" onClick={this.props.signOut}>
                   Sign Out
                 </button>
               </li>
@@ -63,7 +63,7 @@ class HeaderAuth extends React.Component {
     }
 
     return (
-      <NavLink className="header-auth__login-link" to={ '/login' }>
+      <NavLink className="header-auth__login-link" to={'/login'}>
         Sign in
       </NavLink>
     );
