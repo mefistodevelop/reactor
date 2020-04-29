@@ -1,6 +1,5 @@
 import React from 'react';
 import './About.scss';
-import Status from './Status/Status';
 import StatusWithHooks from './Status/StatusWithHooks';
 
 function About(props) {
