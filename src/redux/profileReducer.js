@@ -1,12 +1,13 @@
-import { getCurrentTime } from "./usersData";
-import { profileApi } from "../api/api";
+import { getCurrentTime } from './usersData';
+import { profileApi } from '../api/api';
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const REMOVE_POST = 'REMOVE_POST';
 
 const initialState = {
-  getCurrentTime: getCurrentTime,
+  getCurrentTime,
   posts: [
     {
       id: 1,
@@ -31,10 +32,11 @@ const initialState = {
 
 function profileReducer(state = initialState, action) {
   switch (action.type) {
-
     case ADD_NEW_POST:
+      if (!action.post || !action.post.trim()) return state;
+
       const lastId = state.posts[state.posts.length - 1].id;
-      
+
       const newPost = {
         id: lastId + 1,
         name: state.userProfile.fullName,
@@ -61,44 +63,45 @@ function profileReducer(state = initialState, action) {
         userStatus: action.status,
       };
 
+    case REMOVE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post.id !== action.id),
+      };
+
     default:
       return state;
-  }  
+  }
 }
 
 export const addPost = (post) => ({ post, type: ADD_NEW_POST });
-export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE, });
-const setUserStatus = (status) => ({ status, type: SET_USER_STATUS });
+export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE });
+export const removePost = (id) => ({ id, type: REMOVE_POST });
+export const setUserStatus = (status) => ({ status, type: SET_USER_STATUS });
 
-export const setUserProfile = (userId) => {
-  return (dispatch) => {
-    profileApi.getUserProfile(userId)
-      .then((response) => {
-        dispatch(setProfile(response));
-      });
-  };
+export const setUserProfile = (userId) => (dispatch) => {
+  profileApi.getUserProfile(userId)
+    .then((response) => {
+      dispatch(setProfile(response));
+    });
 };
 
-export const getUserStatus = (id) => {
-  return (dispatch) => {
-    profileApi
-      .getUserStatus(id)
-      .then((response) => {
-        dispatch(setUserStatus(response.data));
-      });
-  }
+export const getUserStatus = (id) => (dispatch) => {
+  profileApi
+    .getUserStatus(id)
+    .then((response) => {
+      dispatch(setUserStatus(response.data));
+    });
 };
 
-export const updateStatus = (status) => {
-  return (dispatch) => {
-    profileApi
-      .updateUserStatus(status)
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          dispatch(setUserStatus(status));
-        }
-      });
-  };
-}
+export const updateStatus = (status) => (dispatch) => {
+  profileApi
+    .updateUserStatus(status)
+    .then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(setUserStatus(status));
+      }
+    });
+};
 
 export default profileReducer;

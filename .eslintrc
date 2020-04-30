@@ -3,5 +3,7 @@
   "rules": {
     "react/jsx-filename-extension": [1, {
     "extensions": [".js", ".jsx"]}
-    ]}
+    ],
+    "no-case-declarations": 0
+  }
 }
