@@ -1,6 +1,6 @@
 import { getCurrentTime, getUser, getFriends } from './usersData';
 
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
+const ADD_NEW_MESSAGE = 'reactor/messages/ADD-NEW-MESSAGE';
 const user = getUser();
 const friends = getFriends();
 

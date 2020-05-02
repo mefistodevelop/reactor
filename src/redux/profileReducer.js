@@ -1,10 +1,10 @@
 import { getCurrentTime } from './usersData';
 import { profileApi } from '../api/api';
 
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_USER_STATUS = 'SET_USER_STATUS';
-const REMOVE_POST = 'REMOVE_POST';
+const ADD_NEW_POST = 'reactor/profile/ADD-NEW-POST';
+const SET_USER_PROFILE = 'reactor/profile/SET-USER-PROFILE';
+const SET_USER_STATUS = 'reactor/profile/SET_USER_STATUS';
+const REMOVE_POST = 'reactor/profile/REMOVE_POST';
 
 const initialState = {
   getCurrentTime,
@@ -79,29 +79,22 @@ export const setProfile = (profile) => ({ profile, type: SET_USER_PROFILE });
 export const removePost = (id) => ({ id, type: REMOVE_POST });
 export const setUserStatus = (status) => ({ status, type: SET_USER_STATUS });
 
-export const setUserProfile = (userId) => (dispatch) => {
-  profileApi.getUserProfile(userId)
-    .then((response) => {
-      dispatch(setProfile(response));
-    });
+export const setUserProfile = (userId) => async (dispatch) => {
+  const response = await profileApi.getUserProfile(userId);
+  dispatch(setProfile(response));
 };
 
-export const getUserStatus = (id) => (dispatch) => {
-  profileApi
-    .getUserStatus(id)
-    .then((response) => {
-      dispatch(setUserStatus(response.data));
-    });
+export const getUserStatus = (id) => async (dispatch) => {
+  const response = await profileApi.getUserStatus(id);
+  dispatch(setUserStatus(response.data));
 };
 
-export const updateStatus = (status) => (dispatch) => {
-  profileApi
-    .updateUserStatus(status)
-    .then((response) => {
-      if (response.data.resultCode === 0) {
-        dispatch(setUserStatus(status));
-      }
-    });
+export const updateStatus = (status) => async (dispatch) => {
+  const response = await profileApi.updateUserStatus(status);
+
+  if (response.data.resultCode === 0) {
+    dispatch(setUserStatus(status));
+  }
 };
 
 export default profileReducer;

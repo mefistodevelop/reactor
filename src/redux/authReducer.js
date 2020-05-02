@@ -1,8 +1,8 @@
-import { authApi, profileApi } from "../api/api";
-import { stopSubmit } from "redux-form";
+import { stopSubmit } from 'redux-form';
+import { authApi, profileApi } from '../api/api';
 
-const SET_USER_DATA = 'SET-USER-DATA';
-const SET_USER_PHOTOS = 'SET_USER_PHOTOS';
+const SET_USER_DATA = 'reactor/auth/SET-USER-DATA';
+const SET_USER_PHOTOS = 'reactor/auth/SET_USER_PHOTOS';
 
 const initialState = {
   id: null,
@@ -12,9 +12,8 @@ const initialState = {
   userPhotos: [],
 };
 
-const  authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
-
     case SET_USER_DATA:
       return {
         ...state,
@@ -33,59 +32,50 @@ const  authReducer = (state = initialState, action) => {
 };
 
 export const setAuthUserData = (id, email, login, isAuth) => ({
-  type: SET_USER_DATA, 
-  data: { id, email, login, isAuth }
+  type: SET_USER_DATA,
+  data: {
+    id, email, login, isAuth,
+  },
 });
 
 const setUserPhotos = (payload) => ({ payload, type: SET_USER_PHOTOS });
 
-export const getAuthData = () => {
-  return (dispatch) => {
-    return authApi
-      .getAuthData()
-      .then((response) => {
-        if (response.resultCode === 0) {
-          const { id, email, login } = response.data;
-          dispatch(setAuthUserData(id, email, login, true));
+export const getAuthData = () => async (dispatch) => {
+  const response = await authApi.getAuthData();
 
-          profileApi.getUserProfile(id).then((response) => {
-            if (response.resultCode === 0) {
-              dispatch(setUserPhotos(response.photos));
-            }
-          });
-        }
-      });
-  };
-}
+  if (response.resultCode === 0) {
+    const { id, email, login } = response.data;
+    dispatch(setAuthUserData(id, email, login, true));
 
-export const signIn = (email, password, rememberMe) => {
-  return (dispatch) => {
-    authApi
-      .login(email, password, rememberMe)
-      .then((response) => {
-        if (response.resultCode === 0) {
-          dispatch(getAuthData());
-        } else {
-          const message = (response.messages.length > 0) 
-            ? response.messages[0]
-            : 'Something wrong';
-          const action = stopSubmit('login', { _error: message});
-          dispatch(action);
-        }
-      });
+    const profileResponse = await profileApi.getUserProfile(id);
+
+    if (profileResponse.resultCode === 0) {
+      dispatch(setUserPhotos(profileResponse.photos));
+    }
   }
-}
+};
 
-export const signOut = () => {
-  return (dispatch) => {
-    authApi
-      .logout()
-      .then((response) => {
-        if (response.resultCode === 0) {
-          dispatch(setAuthUserData(null, null, null, false));
-        }
-      });
+export const signIn = (email, password, rememberMe) => async (dispatch) => {
+  const response = await authApi.login(email, password, rememberMe);
+
+  if (response.resultCode === 0) {
+    dispatch(getAuthData());
+  } else {
+    const message = (response.messages.length > 0)
+      ? response.messages[0]
+      : 'Something wrong';
+    const action = stopSubmit('login', { _error: message });
+    dispatch(action);
   }
-}
+};
+
+export const signOut = () => async (dispatch) => {
+  const response = await authApi.logout();
+
+  if (response.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+    dispatch(setUserPhotos([]));
+  }
+};
 
 export default authReducer;
