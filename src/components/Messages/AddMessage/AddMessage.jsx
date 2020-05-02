@@ -6,7 +6,9 @@ import AddMessageForm from './AddMessageForm/AddMessageForm';
 
 function AddMessage({ addMessage }) {
   const addNewMessage = (formData) => {
-    addMessage(formData.newMessageText);
+    if (formData.newMessageText && formData.newMessageText.trim()) {
+      addMessage(formData.newMessageText);
+    }
   };
 
   const AddMessageReduxForm = reduxForm({ form: 'newMessage' })(AddMessageForm);
