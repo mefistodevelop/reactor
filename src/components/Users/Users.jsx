@@ -61,7 +61,7 @@ Users.propTypes = {
   users: PropTypes.arrayOf(PropTypes.object).isRequired,
   follow: PropTypes.func.isRequired,
   unfollow: PropTypes.func.isRequired,
-  followingInProgress: PropTypes.bool.isRequired,
+  followingInProgress: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 export default Users;
