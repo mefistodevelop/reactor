@@ -4,6 +4,7 @@
     "react/jsx-filename-extension": [1, {
     "extensions": [".js", ".jsx"]}
     ],
-    "no-case-declarations": 0
+    "no-case-declarations": 0,
+    "object-curly-newline": 0
   }
 }
