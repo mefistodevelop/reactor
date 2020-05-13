@@ -5,6 +5,7 @@
     "extensions": [".js", ".jsx"]}
     ],
     "no-case-declarations": 0,
-    "object-curly-newline": 0
+    "object-curly-newline": 0,
+    "jsx-a11y/label-has-associated-control": 0
   }
 }

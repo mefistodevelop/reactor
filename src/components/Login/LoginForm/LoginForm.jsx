@@ -1,31 +1,38 @@
 import React from 'react';
+import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import './LoginForm.scss';
 import Button from '../../Button/Button';
-import { Field } from 'redux-form';
 import { Input } from '../../common/FormElements/FormElements';
 import { required, maxLength, minLength } from '../../../utils/validators';
 
-function LoginForm(props) {
+const maxLength10 = maxLength(10);
+const minLength4 = minLength(4);
+
+function LoginForm({ handleSubmit, error }) {
   return (
-    <form onSubmit={ props.handleSubmit } className="login-form">
+    <form onSubmit={handleSubmit} className="login-form">
       <h3 className="login-form__title">Login</h3>
-      <Field className="login-form__field"
-        component={ Input }
+      <Field
+        className="login-form__field"
+        component={Input}
         type="email"
         name="email"
         placeholder="email"
-        validate={[ required ]}
+        validate={[required]}
       />
-      <Field className="login-form__field"
-        component={ Input }
+      <Field
+        className="login-form__field"
+        component={Input}
         type="password"
         name="password"
         placeholder="password"
-        validate={[ required, maxLength10, minLength4 ]}
+        validate={[required, maxLength10, minLength4]}
       />
 
       <label className="login-form__label">
-        <Field className="login-form__checkbox"
+        <Field
+          className="login-form__checkbox"
           component="input"
           type="checkbox"
           name="rememberMe"
@@ -34,14 +41,20 @@ function LoginForm(props) {
         Remember me
       </label>
       <div className="form-error">
-        { props.error }
+        {error}
       </div>
       <Button type="submit" text="Enter" />
     </form>
   );
 }
 
-const maxLength10 = maxLength(10);
-const minLength4 = minLength(4);
+LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+  error: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  error: '',
+};
 
 export default LoginForm;

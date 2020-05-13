@@ -1,34 +1,30 @@
 import React from 'react';
+import { reduxForm } from 'redux-form';
+import { useSelector, useDispatch } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import './Login.scss';
 import LoginForm from './LoginForm/LoginForm';
-import { reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
 import { signIn } from '../../redux/authReducer';
-import { Redirect } from 'react-router-dom';
 
-function Login(props) {
+function Login() {
+  const dispatch = useDispatch();
+  const isAuth = useSelector((state) => state.auth.isAuth);
 
-  const LoginReduxForm  = reduxForm({ form: 'login' })(LoginForm);
+  const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
-  const onFormSubmit = (formData) => {
-    props.signIn(formData.email, formData.password, formData.rememberMe);
+  const onFormSubmit = ({ email, password, rememberMe }) => {
+    dispatch(signIn(email, password, rememberMe));
   };
 
-  if (props.isAuth) {
+  if (isAuth) {
     return <Redirect to="/profile" />;
   }
 
   return (
     <section className="login">
-      <div className="login__form">
-        <LoginReduxForm onSubmit={ onFormSubmit } />
-      </div>
+      <LoginReduxForm onSubmit={onFormSubmit} />
     </section>
   );
 }
 
-const mapStateToProps = (state) => ({
-  isAuth: state.auth.isAuth,
-});
-
-export default connect(mapStateToProps, { signIn })(Login);
+export default Login;
