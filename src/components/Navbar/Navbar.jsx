@@ -2,38 +2,38 @@ import React from 'react';
 import './Navbar.scss';
 import { NavLink } from 'react-router-dom';
 
-function Navbar(props) {
+function Navbar() {
   return (
     <div className="navbar">
       <nav className="navbar__navigation">
         <ul className="navbar__navigation-list">
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/profile'}>
+            <NavLink className="navbar__navigation-link" to="/profile">
               Profile
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/messages'}>
+            <NavLink className="navbar__navigation-link" to="/messages">
               Messages
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/news'}>
+            <NavLink className="navbar__navigation-link" to="/news">
               News
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/music'}>
+            <NavLink className="navbar__navigation-link" to="/music">
               Music
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/settings'}>
+            <NavLink className="navbar__navigation-link" to="/settings">
               Settings
             </NavLink>
           </li>
           <li className="navbar__navigation-item">
-            <NavLink className={'navbar__navigation-link'} to={'/users'}>
+            <NavLink className="navbar__navigation-link" to="/users">
               Users
             </NavLink>
           </li>
