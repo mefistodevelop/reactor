@@ -1,12 +1,18 @@
 ## Reactor social network
 
+Go to site: https://reactor-22fd0.firebaseapp.com/
+
+login: free@samuraijs.com
+password: free
+
 I develop this social network to improve my React skills.
-In my work I use React and next libraries: 
-* Redux
-* react-redux
-* redux-thunk
-* axios
-* redux-form
+In my work I use React and next libraries:
+
+- Redux
+- react-redux
+- redux-thunk
+- axios
+- redux-form
 
 For styles I use Sass(SCSS) and BEM methodology.
 
