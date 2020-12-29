@@ -20,7 +20,10 @@ const initialState: InitialStateType = {
   userPhotos: [],
 };
 
-const authReducer = (state = initialState, action: any): InitialStateType => {
+export const authReducer = (
+  state = initialState,
+  action: any
+): InitialStateType => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -120,5 +123,3 @@ export const signOut = () => async (dispatch: any) => {
     dispatch(setUserPhotos([]));
   }
 };
-
-export default authReducer;
