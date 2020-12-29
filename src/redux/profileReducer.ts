@@ -1,5 +1,6 @@
 import { getCurrentTime } from './usersData';
 import { profileApi } from '../api/api';
+import { PhotosType } from '../types/types';
 
 const ADD_NEW_POST = 'reactor/profile/ADD-NEW-POST';
 const SET_USER_PROFILE = 'reactor/profile/SET-USER-PROFILE';
@@ -24,11 +25,6 @@ type ContactsType = {
   website: string;
   youtube: string;
   mainLink: string;
-};
-
-type PhotosType = {
-  small: string | null;
-  large: string | null;
 };
 
 type ProfileType = {
