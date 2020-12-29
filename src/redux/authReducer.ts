@@ -4,26 +4,15 @@ import { authApi, profileApi } from '../api/api';
 const SET_USER_DATA = 'reactor/auth/SET-USER-DATA';
 const SET_USER_PHOTOS = 'reactor/auth/SET_USER_PHOTOS';
 
-type InitialStateType = {
-  id: number | null;
-  email: string | null;
-  login: string | null;
-  isAuth: boolean;
-  userPhotos: Array<string>;
+const initialState = {
+  id: null as number | null,
+  email: null as string | null,
+  login: null as string | null,
+  isAuth: false as boolean,
+  userPhotos: [] as Array<string>,
 };
 
-const initialState: InitialStateType = {
-  id: null,
-  email: null,
-  login: null,
-  isAuth: false,
-  userPhotos: [],
-};
-
-export const authReducer = (
-  state = initialState,
-  action: any
-): InitialStateType => {
+export const authReducer = (state = initialState, action: any): typeof initialState => {
   switch (action.type) {
     case SET_USER_DATA:
       return {
@@ -94,20 +83,13 @@ export const getAuthData = () => async (dispatch: any) => {
   }
 };
 
-export const signIn = (
-  email: string,
-  password: string,
-  rememberMe: boolean
-) => async (dispatch: any) => {
-  const { resultCode, messages } = await authApi.login(
-    email,
-    password,
-    rememberMe
-  );
+export const signIn = (email: string, password: string, rememberMe: boolean) => async (
+  dispatch: any
+) => {
+  const { resultCode, messages } = await authApi.login(email, password, rememberMe);
 
   if (resultCode !== 0) {
-    const message: string =
-      messages.length > 0 ? messages[0] : 'Something wrong';
+    const message: string = messages.length > 0 ? messages[0] : 'Something wrong';
     const action = stopSubmit('login', { _error: message });
     return dispatch(action);
   }

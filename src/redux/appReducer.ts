@@ -2,18 +2,14 @@ import { getAuthData } from './authReducer';
 
 const INITIALIZE_SUCCESS = 'reactor/app/INITIALIZE_SUCCESS';
 
-type InitialStateType = {
-  initialized: boolean;
-};
-
-const initialState: InitialStateType = {
+const initialState = {
   initialized: false,
 };
 
 export const appReducer = (
   state = initialState,
   action: any
-): InitialStateType => {
+): typeof initialState => {
   switch (action.type) {
     case INITIALIZE_SUCCESS:
       return {
