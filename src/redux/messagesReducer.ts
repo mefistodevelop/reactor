@@ -1,13 +1,21 @@
-import { getCurrentTime, getUser, getFriends } from './usersData';
+import { getCurrentTime, getUser, getFriends, UserType } from './usersData';
 
 const ADD_NEW_MESSAGE = 'reactor/messages/ADD-NEW-MESSAGE';
 const user = getUser();
 const friends = getFriends();
 
+type MessageType = {
+  id: number;
+  text: string;
+  userpic: string;
+  time: string;
+  mod: string;
+};
+
 const initialState = {
   getCurrentTime,
-  friends,
-  user,
+  friends: friends as Array<UserType>,
+  user: user as UserType,
   messagesStore: [
     {
       id: 1,
@@ -17,33 +25,34 @@ const initialState = {
     },
     {
       id: 2,
-      text: 'What\'s up',
+      text: "What's up",
       userpic: friends[0].userpic,
       time: '21: 34',
     },
     {
       id: 3,
-      text: 'Go to party! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi non numquam tempore? Dolores eaque quod possimus magnam ullam accusantium odit!',
+      text:
+        'Go to party! Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi non numquam tempore? Dolores eaque quod possimus magnam ullam accusantium odit!',
       userpic: friends[0].userpic,
       time: '21:35',
     },
     {
       id: 4,
-      text: 'Yo! i\'m in!',
+      text: "Yo! i'm in!",
       userpic: user.userpic,
       mod: 'me',
       time: '21:40',
     },
-  ],
+  ] as Array<MessageType>,
 };
 
-function messagesReducer(state = initialState, action) {
+export function messagesReducer(state = initialState, action: any): typeof initialState {
   switch (action.type) {
     case ADD_NEW_MESSAGE:
       if (!action.message || !action.message.trim()) return state;
 
       const lastId = state.messagesStore[state.messagesStore.length - 1].id;
-      const newMessage = {
+      const newMessage: MessageType = {
         id: lastId + 1,
         userpic: state.user.userpic,
         text: action.message.trim(),
@@ -61,6 +70,12 @@ function messagesReducer(state = initialState, action) {
   }
 }
 
-export const addMessage = (message) => ({ message, type: ADD_NEW_MESSAGE });
+type AddMessageType = {
+  type: typeof ADD_NEW_MESSAGE;
+  message: MessageType;
+};
 
-export default messagesReducer;
+export const addMessage = (message: MessageType): AddMessageType => ({
+  message,
+  type: ADD_NEW_MESSAGE,
+});
