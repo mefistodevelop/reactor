@@ -2,11 +2,15 @@ import { getAuthData } from './authReducer';
 
 const INITIALIZE_SUCCESS = 'reactor/app/INITIALIZE_SUCCESS';
 
-const initialState = {
+type InitialStateType = {
+  initialized: boolean;
+};
+
+const initialState: InitialStateType = {
   initialized: false,
 };
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any): InitialStatetype => {
   switch (action.type) {
     case INITIALIZE_SUCCESS:
       return {
@@ -19,9 +23,15 @@ const appReducer = (state = initialState, action) => {
   }
 };
 
-const initializeSuccess = () => ({ type: INITIALIZE_SUCCESS });
+type InitializeSuccessType = {
+  type: typeof INITIALIZE_SUCCESS;
+};
 
-export const initializeApp = () => async (dispatch) => {
+const initializeSuccess = (): InitializeSuccessType => ({
+  type: INITIALIZE_SUCCESS,
+});
+
+export const initializeApp = () => async (dispatch: any) => {
   await dispatch(getAuthData());
   dispatch(initializeSuccess());
 };
