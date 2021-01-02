@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './User.scss';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
 
@@ -14,6 +15,7 @@ function User({
   name,
   status,
 }) {
+  const dispatch = useDispatch();
   return (
     <div className="user">
       <div className="user__main-wrapper">
@@ -27,7 +29,7 @@ function User({
             className="button"
             type="button"
             disabled={followingInProgress.some((userId) => userId === id)}
-            onClick={() => (followed ? unfollow(id) : follow(id))}
+            onClick={() => (followed ? dispatch(unfollow(id)) : dispatch(follow(id)))}
           >
             {followed ? 'unfollow' : 'follow'}
           </button>
@@ -40,9 +42,7 @@ function User({
             {name}
           </NavLink>
         </span>
-        <span className="user__status">
-          {status}
-        </span>
+        <span className="user__status">{status}</span>
       </div>
 
       <div className="user__location">

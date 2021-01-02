@@ -5,24 +5,28 @@ import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navbar from './components/Navbar/Navbar';
 import MessagesContainer from './components/Messages/MessagesContainer';
-import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
 import Spinner from './components/common/Spinner/Spinner';
+import { Users } from './components/Users/Users';
 
 class App extends React.Component {
   componentDidMount = () => {
     // eslint-disable-next-line
     this.props.initializeApp();
-  }
+  };
 
   render() {
     const { initialized } = this.props;
 
     if (!initialized) {
-      return <div className="spinner"><Spinner size="100" /></div>;
+      return (
+        <div className="spinner">
+          <Spinner size="100" />
+        </div>
+      );
     }
 
     return (
@@ -34,7 +38,7 @@ class App extends React.Component {
             <Route exact path="/" render={() => <Login />} />
             <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
             <Route path="/messages" render={() => <MessagesContainer />} />
-            <Route path="/users" render={() => <UsersContainer />} />
+            <Route path="/users" render={() => <Users />} />
             <Route path="/login" render={() => <Login />} />
           </div>
         </div>

@@ -1,32 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Users.scss';
 import User from './User/User';
 import { Pagination } from '@material-ui/lab';
+import { useSelector, useDispatch } from 'react-redux';
 import { UserType } from '../../types/types';
+import { follow, unfollow, requestUsers } from '../../redux/usersReducer';
+import Spinner from '../common/Spinner/Spinner';
 
-type UsersProps = {
-  pageSize: number;
-  totalUsersCount: number;
-  currentPage: number;
-  onCurrentPageChange: () => void;
-  users: Array<UserType>;
-  follow: () => void;
-  unfollow: () => void;
-  followingInProgress: Array<number>;
-};
+export function Users() {
+  const dispatch = useDispatch();
+  const usersState = useSelector((state: any) => state.usersPage);
+  const pageSize = usersState.pageSize;
+  const users = usersState.users;
+  const currentPage = usersState.currentPage;
+  const followingInProgress = usersState.followingInProgress;
+  const totalUsersCount = usersState.totalUsersCount;
+  const isFetching = usersState.isFetching;
 
-export function Users({
-  pageSize,
-  totalUsersCount,
-  currentPage,
-  onCurrentPageChange,
-  users,
-  follow,
-  unfollow,
-  followingInProgress,
-}: UsersProps) {
+  useEffect(() => {
+    dispatch(requestUsers(currentPage, pageSize));
+  }, []);
+
+  const onCurrentPageChange = (event: Object, page: number): void => {
+    dispatch(requestUsers(page, pageSize));
+  };
+
   const pagesCount = Math.ceil(totalUsersCount / pageSize);
-  const usersItems = users.map((user) => (
+  const usersItems = users.map((user: UserType) => (
     <li className="users__item" key={user.id}>
       <User
         name={user.name}
@@ -50,7 +50,7 @@ export function Users({
           onChange={onCurrentPageChange}
         />
       </div>
-      <ul className="users__list">{usersItems}</ul>
+      {isFetching ? <Spinner /> : <ul className="users__list">{usersItems}</ul>}
     </section>
   );
 }
