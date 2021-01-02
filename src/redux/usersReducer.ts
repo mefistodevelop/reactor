@@ -1,5 +1,5 @@
 import { usersApi } from '../api/api';
-import { PhotosType } from '../types/types';
+import { UserType } from '../types/types';
 
 const FOLLOW = 'reactor/users/FOLLOW';
 const UNFOLLOW = 'reactor/users/UNFOLLOW';
@@ -8,14 +8,6 @@ const SET_CURRENT_PAGE = 'reactor/users/SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'reactor/users/SET-TOTAL-USERS-COUNT';
 const SET_IS_FETCHING = 'reactor/users/SET-IS-FETCHING';
 const SET_FOLLOWING_IN_PROGRESS = 'reactor/users/SET_FOLLOWING_IN_PROGRESS';
-
-type UserType = {
-  id: number;
-  name: string;
-  status: string;
-  photos: PhotosType;
-  followed: boolean;
-};
 
 const initialState = {
   users: [] as Array<UserType>,
