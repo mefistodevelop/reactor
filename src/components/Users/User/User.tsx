@@ -22,8 +22,8 @@ export function User({
   unfollow,
   id,
   name,
-  userpic = '',
-  status = '',
+  userpic,
+  status,
 }: UserProps) {
   const dispatch = useDispatch();
 
