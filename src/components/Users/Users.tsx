@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Users.scss';
-import User from './User/User';
+import { User } from './User/User';
 import { Pagination } from '@material-ui/lab';
 import { useSelector, useDispatch } from 'react-redux';
 import { UserType } from '../../types/types';

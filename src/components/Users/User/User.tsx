@@ -1,21 +1,32 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import './User.scss';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
 
-function User({
+type UserProps = {
+  followed: boolean;
+  followingInProgress: Array<number>;
+  follow: (id: number) => void;
+  unfollow: (id: number) => void;
+  id: number;
+  userpic: string | null;
+  name: string;
+  status: string;
+};
+
+export function User({
   followed,
   followingInProgress,
   follow,
   unfollow,
   id,
-  userpic,
   name,
-  status,
-}) {
+  userpic = '',
+  status = '',
+}: UserProps) {
   const dispatch = useDispatch();
+
   return (
     <div className="user">
       <div className="user__main-wrapper">
@@ -29,7 +40,9 @@ function User({
             className="button"
             type="button"
             disabled={followingInProgress.some((userId) => userId === id)}
-            onClick={() => (followed ? dispatch(unfollow(id)) : dispatch(follow(id)))}
+            onClick={(): void =>
+              followed ? dispatch(unfollow(id)) : dispatch(follow(id))
+            }
           >
             {followed ? 'unfollow' : 'follow'}
           </button>
@@ -52,21 +65,3 @@ function User({
     </div>
   );
 }
-
-User.propTypes = {
-  followed: PropTypes.bool.isRequired,
-  followingInProgress: PropTypes.arrayOf(PropTypes.number).isRequired,
-  follow: PropTypes.func.isRequired,
-  unfollow: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  userpic: PropTypes.string,
-  status: PropTypes.string,
-};
-
-User.defaultProps = {
-  userpic: '',
-  status: '',
-};
-
-export default User;
