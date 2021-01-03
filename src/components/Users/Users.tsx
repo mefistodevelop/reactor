@@ -6,10 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { UserType } from '../../types/types';
 import { follow, unfollow, requestUsers } from '../../redux/usersReducer';
 import Spinner from '../common/Spinner/Spinner';
+import { StateType } from '../../redux/reduxStore';
 
 export function Users() {
   const dispatch = useDispatch();
-  const usersState = useSelector((state: any) => state.usersPage);
+  const usersState = useSelector((state: StateType): Object => state.usersPage);
   const pageSize = usersState.pageSize;
   const users = usersState.users;
   const currentPage = usersState.currentPage;
