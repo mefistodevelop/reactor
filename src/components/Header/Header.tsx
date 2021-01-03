@@ -1,9 +1,15 @@
 import React from 'react';
 import './Header.scss';
+import { useSelector } from 'react-redux';
 import logo from './images/logo.svg';
 import HeaderAuth from './HeaderAuth/HeaderAuth';
+import { StateType } from '../../redux/reduxStore';
+import { signOut } from '../../redux/authReducer';
 
-function Header(props) {
+export function Header() {
+  const headerState = useSelector((state: StateType) => state.auth);
+  const { id, login, isAuth } = headerState;
+  const userpic = headerState.userPhotos.large;
 
   return (
     <header className="site-header">
@@ -26,16 +32,14 @@ function Header(props) {
 
         <div className="site-header__auth-wrapper">
           <HeaderAuth
-            id={props.id}
-            login={props.login}
-            signOut={props.signOut}
-            isAuth={props.isAuth}
-            userpic={props.userpic}
+            id={id}
+            login={login}
+            signOut={signOut}
+            isAuth={isAuth}
+            userpic={userpic}
           />
         </div>
       </div>
     </header>
   );
 }
-
-export default Header;

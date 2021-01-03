@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Navbar from './components/Navbar/Navbar';
 import MessagesContainer from './components/Messages/MessagesContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
-import HeaderContainer from './components/Header/HeaderContainer';
+import { Header } from './components/Header/Header';
 import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
 import Spinner from './components/common/Spinner/Spinner';
@@ -31,7 +31,7 @@ class App extends React.Component {
 
     return (
       <div className="app-wrapper">
-        <HeaderContainer />
+        <Header />
         <div className="content-wrapper">
           <Navbar />
           <div className="content">
