@@ -1,11 +1,6 @@
-export type UserType = {
-  id: number;
-  name: string;
-  userpic: string;
-  link?: string;
-};
+import { DialogUserType } from '../types/types';
 
-const user: UserType = {
+const user: DialogUserType = {
   id: 1,
   name: 'User name',
   userpic: 'https://sun9-39.userapi.com/c624318/v624318471/2b0b4/cRkccpbqGdg.jpg',
@@ -45,11 +40,11 @@ const friends = [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQR4VFHTHU0j5LMF45COg_es5t0S3BqkcBqReA3QUCZxx00hFxF',
     link: 'spaceRanger007',
   },
-] as Array<UserType>;
+] as Array<DialogUserType>;
 
-export const getUser = (): UserType => user;
+export const getUser = (): DialogUserType => user;
 
-export const getFriends = (): Array<UserType> => friends;
+export const getFriends = (): Array<DialogUserType> => friends;
 
 export const getCurrentTime = (): string => {
   const today = new Date();

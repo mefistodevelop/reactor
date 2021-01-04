@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Navbar from './components/Navbar/Navbar';
-import MessagesContainer from './components/Messages/MessagesContainer';
+import { Messages } from './components/Messages/Messages';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { Header } from './components/Header/Header';
 import Login from './components/Login/Login';
@@ -37,7 +37,7 @@ class App extends React.Component {
           <div className="content">
             <Route exact path="/" render={() => <Login />} />
             <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
-            <Route path="/messages" render={() => <MessagesContainer />} />
+            <Route path="/messages" render={() => <Messages />} />
             <Route path="/users" render={() => <Users />} />
             <Route path="/login" render={() => <Login />} />
           </div>

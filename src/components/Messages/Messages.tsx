@@ -1,18 +1,24 @@
-import React, { createRef, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useRef } from 'react';
 import './Messages.scss';
+import { useSelector } from 'react-redux';
 import { Message } from './Message/Message';
 import { DialogCard } from './DialogCard/DialogCard';
 import AddMessage from './AddMessage/AddMessage';
+import { addMessage } from '../../redux/messagesReducer';
+import { StateType } from '../../redux/reduxStore';
+import { DialogUserType, MessageType } from '../../types/types';
 
-function Messages({ messagesPage: { friends, messagesStore }, addMessage }) {
-  const dialogs = friends.map((dialog) => (
+export function Messages() {
+  const { friends, messagesStore } = useSelector(
+    (state: StateType) => state.messagesPage
+  );
+  const dialogs = friends.map((dialog: DialogUserType) => (
     <li className="dialogs__item" key={dialog.id}>
       <DialogCard userpic={dialog.userpic} name={dialog.name} link={dialog.link} />
     </li>
   ));
 
-  const chat = messagesStore.map((message) => (
+  const chat = messagesStore.map((message: MessageType) => (
     <Message
       key={message.id}
       userpic={message.userpic}
@@ -22,7 +28,7 @@ function Messages({ messagesPage: { friends, messagesStore }, addMessage }) {
     />
   ));
 
-  const chatBottom = createRef();
+  const chatBottom: any = useRef(null);
 
   useEffect(() => {
     chatBottom.current.scrollIntoView();
@@ -45,17 +51,3 @@ function Messages({ messagesPage: { friends, messagesStore }, addMessage }) {
     </main>
   );
 }
-
-Messages.defaultProps = {
-  friends: [],
-  messagesStore: [],
-};
-
-Messages.propTypes = {
-  messagesPage: PropTypes.objectOf(PropTypes.any).isRequired,
-  friends: PropTypes.arrayOf(PropTypes.object),
-  messagesStore: PropTypes.arrayOf(PropTypes.object),
-  addMessage: PropTypes.func.isRequired,
-};
-
-export default Messages;

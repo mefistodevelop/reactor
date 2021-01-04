@@ -1,21 +1,14 @@
-import { getCurrentTime, getUser, getFriends, UserType } from './usersData';
+import { DialogUserType, MessageType } from '../types/types';
+import { getCurrentTime, getUser, getFriends } from './usersData';
 
 const ADD_NEW_MESSAGE = 'reactor/messages/ADD-NEW-MESSAGE';
 const user = getUser();
 const friends = getFriends();
 
-type MessageType = {
-  id: number;
-  text: string;
-  userpic: string;
-  time: string;
-  mod: string;
-};
-
 const initialState = {
   getCurrentTime,
-  friends: friends as Array<UserType>,
-  user: user as UserType,
+  friends: friends as Array<DialogUserType>,
+  user: user as DialogUserType,
   messagesStore: [
     {
       id: 1,

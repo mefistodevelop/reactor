@@ -19,3 +19,18 @@ export type PostType = {
   text: string;
   likes: number;
 };
+
+export type MessageType = {
+  id: number;
+  text: string;
+  userpic: string;
+  time: string;
+  mod: string;
+};
+
+export type DialogUserType = {
+  id: number;
+  name: string;
+  userpic: string;
+  link?: string;
+};

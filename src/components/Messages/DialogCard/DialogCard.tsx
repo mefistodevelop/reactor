@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import Userpic from '../../common/Userpic/Userpic';
 
 type DialogCardType = {
-  link: string;
+  link: string | undefined;
   name: string;
   userpic: string;
 };

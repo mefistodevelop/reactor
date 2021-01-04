@@ -3,11 +3,14 @@ import './AddMessage.scss';
 import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import AddMessageForm from './AddMessageForm/AddMessageForm';
+import { useDispatch } from 'react-redux';
 
 function AddMessage({ addMessage }) {
+  const dispatch = useDispatch();
+
   const addNewMessage = (formData) => {
     if (formData.newMessageText && formData.newMessageText.trim()) {
-      addMessage(formData.newMessageText);
+      dispatch(addMessage(formData.newMessageText));
     }
   };
 
