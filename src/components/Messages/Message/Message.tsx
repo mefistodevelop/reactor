@@ -1,9 +1,15 @@
 import React from 'react';
 import './Message.scss';
-import PropTypes from 'prop-types';
 import Userpic from '../../common/Userpic/Userpic';
 
-function Message({ mod, userpic, text, time }) {
+type MessageType = {
+  mod: string;
+  userpic: string;
+  text: string;
+  time: string;
+};
+
+export function Message({ mod, userpic, text, time }: MessageType) {
   const messageMod = mod ? ` message_${mod}` : '';
   const userpicMod = mod ? ` message__userpic_${mod}` : '';
   const bubbleMod = mod ? ` message__bubble_${mod}` : '';
@@ -15,27 +21,9 @@ function Message({ mod, userpic, text, time }) {
       </div>
 
       <div className={`message__bubble ${bubbleMod}`}>
-        <p className="message__text">
-          {text}
-        </p>
-        <span className="message__time">
-          {time}
-        </span>
+        <p className="message__text">{text}</p>
+        <span className="message__time">{time}</span>
       </div>
     </div>
   );
 }
-
-Message.propTypes = {
-  mod: PropTypes.string,
-  userpic: PropTypes.string,
-  text: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
-};
-
-Message.defaultProps = {
-  mod: '',
-  userpic: '',
-};
-
-export default Message;
