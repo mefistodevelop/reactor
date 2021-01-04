@@ -10,3 +10,12 @@ export type UserType = {
   photos: PhotosType;
   followed: boolean;
 };
+
+export type PostType = {
+  id: number;
+  name: string;
+  userpic: string | null;
+  time: string;
+  text: string;
+  likes: number;
+};

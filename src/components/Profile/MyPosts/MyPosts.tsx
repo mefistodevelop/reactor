@@ -1,11 +1,18 @@
 import React from 'react';
 import './MyPosts.scss';
 import { Post } from './Post/Post';
-import AddPost from './AddPost/AddPost';
+import { AddPost } from './AddPost/AddPost';
+import { PostType } from '../../../types/types';
+import { useSelector } from 'react-redux';
+import { StateType } from '../../../redux/reduxStore';
+import { addPost } from '../../../redux/profileReducer';
 
-const MyPosts = ({ posts, userpic, addPost }) => {
+export const MyPosts = () => {
+  const posts = useSelector((state: StateType) => state.profilePage.posts);
+  const userpic = useSelector((state: StateType) => state.auth.userPhotos.small);
+
   const myPosts = posts
-    .map((post) => (
+    .map((post: PostType) => (
       <Post
         key={post.id}
         name={post.name}
@@ -27,5 +34,3 @@ const MyPosts = ({ posts, userpic, addPost }) => {
     </div>
   );
 };
-
-export default MyPosts;

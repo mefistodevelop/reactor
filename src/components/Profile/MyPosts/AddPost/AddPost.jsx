@@ -3,14 +3,16 @@ import './AddPost.scss';
 import Userpic from '../../../common/Userpic/Userpic';
 import { reduxForm } from 'redux-form';
 import AddPostForm from './AddPostForm/AddPostForm';
+import { useDispatch } from 'react-redux';
 
-function AddPost({ addPost, userpic }) {
+export function AddPost({ addPost, userpic }) {
+  const dispatch = useDispatch();
 
   const onAddPost = (formData) => {
     if (formData.newPost && formData.newPost.trim()) {
-      addPost(formData.newPost.trim());
+      dispatch(addPost(formData.newPost.trim()));
     }
-  }
+  };
 
   const AddPostReduxForm = reduxForm({ form: 'newPost' })(AddPostForm);
 
@@ -25,5 +27,3 @@ function AddPost({ addPost, userpic }) {
     </div>
   );
 }
-
-export default AddPost;

@@ -1,5 +1,6 @@
 import { stopSubmit } from 'redux-form';
 import { authApi, profileApi } from '../api/api';
+import { PhotosType } from '../types/types';
 
 const SET_USER_DATA = 'reactor/auth/SET-USER-DATA';
 const SET_USER_PHOTOS = 'reactor/auth/SET_USER_PHOTOS';
@@ -9,7 +10,7 @@ const initialState = {
   email: null as string | null,
   login: null as string | null,
   isAuth: false as boolean,
-  userPhotos: [] as Array<string>,
+  userPhotos: {} as PhotosType,
 };
 
 export const authReducer = (state = initialState, action: any): typeof initialState => {

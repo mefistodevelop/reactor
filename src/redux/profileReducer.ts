@@ -1,20 +1,11 @@
 import { getCurrentTime } from './usersData';
 import { profileApi } from '../api/api';
-import { PhotosType } from '../types/types';
+import { PhotosType, PostType } from '../types/types';
 
 const ADD_NEW_POST = 'reactor/profile/ADD-NEW-POST';
 const SET_USER_PROFILE = 'reactor/profile/SET-USER-PROFILE';
 const SET_USER_STATUS = 'reactor/profile/SET_USER_STATUS';
 const REMOVE_POST = 'reactor/profile/REMOVE_POST';
-
-type PostType = {
-  id: number;
-  name: string;
-  userpic: string | null;
-  time: string;
-  text: string;
-  likes: number;
-};
 
 type ContactsType = {
   github: string;

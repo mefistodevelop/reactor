@@ -3,7 +3,7 @@ import './Post.scss';
 import Userpic from '../../../common/Userpic/Userpic';
 
 type PostType = {
-  userpic: string;
+  userpic: string | null;
   name: string;
   time: string;
   text: string;
