@@ -2,7 +2,7 @@ import React, { createRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './Messages.scss';
 import { Message } from './Message/Message';
-import DialogCard from './DialogCard/DialogCard';
+import { DialogCard } from './DialogCard/DialogCard';
 import AddMessage from './AddMessage/AddMessage';
 
 function Messages({ messagesPage: { friends, messagesStore }, addMessage }) {
