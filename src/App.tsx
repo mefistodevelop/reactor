@@ -2,7 +2,6 @@ import React from 'react';
 import './App.scss';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Navbar from './components/Navbar/Navbar';
 import { Messages } from './components/Messages/Messages';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -11,10 +10,15 @@ import Login from './components/Login/Login';
 import { initializeApp } from './redux/appReducer';
 import Spinner from './components/common/Spinner/Spinner';
 import { Users } from './components/Users/Users';
+import { StateType } from './redux/reduxStore';
 
-class App extends React.Component {
+type Props = {
+  initialized: boolean;
+  initializeApp: () => void;
+};
+
+class App extends React.Component<Props> {
   componentDidMount = () => {
-    // eslint-disable-next-line
     this.props.initializeApp();
   };
 
@@ -47,11 +51,7 @@ class App extends React.Component {
   }
 }
 
-App.propTypes = {
-  initialized: PropTypes.bool.isRequired,
-};
-
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: StateType) => ({
   initialized: state.app.initialized,
 });
 
