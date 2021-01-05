@@ -1,20 +1,28 @@
 ## Reactor social network
 
-Go to site: https://reactor-22fd0.firebaseapp.com/
+#### Run the demo: https://mefistodevelop.github.io/reactor/
 
+```
 login: free@samuraijs.com
 password: free
+```
+
+**If nothing happens after you pressed login button, then perhaps your browser blocks cookies for this website and you have to [turn them on](https://www.nap.edu/content/enabling-cookies-in-your-browser)**
+
+---
 
 I develop this social network to improve my React skills.
-In my work I use React and next libraries:
+In my work I use React and the following libraries:
 
 - Redux
 - react-redux
 - redux-thunk
+- react-router
 - axios
 - redux-form
 
 For styles I use Sass(SCSS) and BEM methodology.
+TypeScript is used for controlling types.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -37,5 +45,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
