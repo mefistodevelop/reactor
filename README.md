@@ -1,14 +1,40 @@
 ## Reactor social network
 
-Go to site: https://reactor-22fd0.firebaseapp.com/
+~~Go to site: https://reactor-22fd0.firebaseapp.com/~~
 
+### For this moment you can test it only locally:
+
+1.Clone the repo
+
+```sh
+$ git clone git@github.com:mefistodevelop/reactor.git
+$ cd reactor
+```
+
+2.Install
+
+```sh
+$ npm install
+```
+
+3.Run
+
+```sh
+$ npm start
+```
+
+4.Log in
+
+```
 login: free@samuraijs.com
 password: free
+```
 
 I develop this social network to improve my React skills.
 In my work I use React and next libraries:
 
 - Redux
+- react-router
 - react-redux
 - redux-thunk
 - axios
@@ -37,5 +63,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
