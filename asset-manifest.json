@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "./static/css/main.5f50250c.chunk.css",
-    "main.js": "./static/js/main.d77f77c7.chunk.js",
-    "main.js.map": "./static/js/main.d77f77c7.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.25645e97.js",
-    "runtime-main.js.map": "./static/js/runtime-main.25645e97.js.map",
-    "static/js/2.bb6229c0.chunk.js": "./static/js/2.bb6229c0.chunk.js",
-    "static/js/2.bb6229c0.chunk.js.map": "./static/js/2.bb6229c0.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.4f39e4ae6efa9841ef4f1f48445490ee.js": "./precache-manifest.4f39e4ae6efa9841ef4f1f48445490ee.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.5f50250c.chunk.css.map": "./static/css/main.5f50250c.chunk.css.map",
-    "static/js/2.bb6229c0.chunk.js.LICENSE.txt": "./static/js/2.bb6229c0.chunk.js.LICENSE.txt",
-    "static/media/LoginForm.scss": "./static/media/check-mark.ae2d5234.svg",
-    "static/media/logo.svg": "./static/media/logo.4a004e7a.svg",
-    "static/media/spinner.svg": "./static/media/spinner.7332b303.svg"
+    "main.css": "/reactor/static/css/main.d572ad5c.chunk.css",
+    "main.js": "/reactor/static/js/main.1f5537a4.chunk.js",
+    "main.js.map": "/reactor/static/js/main.1f5537a4.chunk.js.map",
+    "runtime-main.js": "/reactor/static/js/runtime-main.6cb79f21.js",
+    "runtime-main.js.map": "/reactor/static/js/runtime-main.6cb79f21.js.map",
+    "static/js/2.ada1286a.chunk.js": "/reactor/static/js/2.ada1286a.chunk.js",
+    "static/js/2.ada1286a.chunk.js.map": "/reactor/static/js/2.ada1286a.chunk.js.map",
+    "index.html": "/reactor/index.html",
+    "precache-manifest.223ab04826df8d3fe59cdd4efc6224c5.js": "/reactor/precache-manifest.223ab04826df8d3fe59cdd4efc6224c5.js",
+    "service-worker.js": "/reactor/service-worker.js",
+    "static/css/main.d572ad5c.chunk.css.map": "/reactor/static/css/main.d572ad5c.chunk.css.map",
+    "static/js/2.ada1286a.chunk.js.LICENSE.txt": "/reactor/static/js/2.ada1286a.chunk.js.LICENSE.txt",
+    "static/media/LoginForm.scss": "/reactor/static/media/check-mark.ae2d5234.svg",
+    "static/media/logo.svg": "/reactor/static/media/logo.4a004e7a.svg",
+    "static/media/spinner.svg": "/reactor/static/media/spinner.7332b303.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.25645e97.js",
-    "static/js/2.bb6229c0.chunk.js",
-    "static/css/main.5f50250c.chunk.css",
-    "static/js/main.d77f77c7.chunk.js"
+    "static/js/runtime-main.6cb79f21.js",
+    "static/js/2.ada1286a.chunk.js",
+    "static/css/main.d572ad5c.chunk.css",
+    "static/js/main.1f5537a4.chunk.js"
   ]
 }
