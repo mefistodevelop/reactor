@@ -7,11 +7,14 @@ import AddMessage from './AddMessage/AddMessage';
 import { addMessage } from '../../redux/messagesReducer';
 import { StateType } from '../../redux/reduxStore';
 import { DialogUserType, MessageType } from '../../types/types';
+import { Redirect } from 'react-router';
 
 export function Messages() {
   const { friends, messagesStore } = useSelector(
     (state: StateType) => state.messagesPage
   );
+  const { isAuth } = useSelector((state: StateType) => state.auth);
+
   const dialogs = friends.map((dialog: DialogUserType) => (
     <li className="dialogs__item" key={dialog.id}>
       <DialogCard userpic={dialog.userpic} name={dialog.name} link={dialog.link} />
@@ -31,8 +34,10 @@ export function Messages() {
   const chatBottom: any = useRef(null);
 
   useEffect(() => {
-    chatBottom.current.scrollIntoView();
+    if (isAuth) chatBottom.current.scrollIntoView();
   });
+
+  if (!isAuth) return <Redirect to="/login" />;
 
   return (
     <main className="messages">

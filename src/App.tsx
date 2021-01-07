@@ -14,6 +14,7 @@ import { StateType } from './redux/reduxStore';
 
 type Props = {
   initialized: boolean;
+  isAuth: boolean;
   initializeApp: () => void;
 };
 
@@ -23,7 +24,7 @@ class App extends React.Component<Props> {
   };
 
   render() {
-    const { initialized } = this.props;
+    const { initialized, isAuth } = this.props;
 
     if (!initialized) {
       return (
@@ -37,7 +38,7 @@ class App extends React.Component<Props> {
       <div className="app-wrapper">
         <Header />
         <div className="content-wrapper">
-          <Navbar />
+          {isAuth && <Navbar />}
           <div className="content">
             <Route exact path="/" render={() => <Login />} />
             <Route path="/profile/:userId?" render={() => <ProfileContainer />} />
@@ -53,6 +54,7 @@ class App extends React.Component<Props> {
 
 const mapStateToProps = (state: StateType) => ({
   initialized: state.app.initialized,
+  isAuth: state.auth.isAuth,
 });
 
 export default connect(mapStateToProps, { initializeApp })(App);

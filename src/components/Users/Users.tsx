@@ -7,6 +7,7 @@ import { UserType } from '../../types/types';
 import { follow, unfollow, requestUsers } from '../../redux/usersReducer';
 import Spinner from '../common/Spinner/Spinner';
 import { StateType } from '../../redux/reduxStore';
+import { Redirect } from 'react-router';
 
 export function Users() {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export function Users() {
   const followingInProgress = usersState.followingInProgress;
   const totalUsersCount = usersState.totalUsersCount;
   const isFetching = usersState.isFetching;
+  const { isAuth } = useSelector((state: StateType) => state.auth);
 
   useEffect(() => {
     dispatch(requestUsers(currentPage, pageSize));
@@ -41,6 +43,8 @@ export function Users() {
       />
     </li>
   ));
+
+  if (!isAuth) return <Redirect to="/login" />;
 
   return (
     <section className="users">
